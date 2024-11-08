@@ -9,14 +9,17 @@ const useUserHook = () => {
 
   const fetchUserData = async () => {
     setLoading(true);
-    try {
-      const data = await apiClient.getRequest<PgUser>("/auth/me");
-      setData(data);
+    const [userData, userDataError] = await apiClient.getRequest<PgUser>(
+      "/auth/me"
+    );
+    if (userDataError) {
+      setIsConnected(false);
+      setLoading(false);
+    } else {
       setIsConnected(true);
-    } catch (e) {
-      console.error(e); // FIXME: handle error
+      setData(userData);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
