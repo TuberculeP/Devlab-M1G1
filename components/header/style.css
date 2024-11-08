@@ -1,0 +1,28 @@
+.header-container {
+    height: fit-content;
+    padding: 8px 28px;
+    border-bottom: 0.2px solid #09090b2c;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.header-logo {
+    width: 64px;
+    height: 64px;
+    background-image: url('https://i.pinimg.com/236x/7c/66/d5/7c66d5905b8455fed3709a4e236c5362.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.header-logo:hover {
+    opacity: 0.9;
+    transition: all ease 0.2s;
+}
+
+.links-container {
+ background-color: red;
+}
