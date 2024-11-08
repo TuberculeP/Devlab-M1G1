@@ -6,7 +6,8 @@ const useFooBarHook = () => {
   const [fooBarData, setData] = useState<Foo[]>([]);
 
   const fetchData = async () => {
-    const data = await apiClient.getRequest<Foo[]>("/api/foo-bar");
+    const [data, dataError] = await apiClient.getRequest<Foo[]>("/api/foo-bar");
+    if (dataError) return;
     setData(data);
   };
 

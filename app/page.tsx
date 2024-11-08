@@ -3,12 +3,10 @@
 import Image from "next/image";
 import useUserHook from "@/hooks/userHook";
 import { useEffect } from "react";
-import apiClient from "@/lib/apiClient";
 
 export default function Home() {
   const { user, loading, fetchUserData } = useUserHook();
   useEffect(() => {
-    apiClient.getRequest("/api/secured").then(console.log);
     fetchUserData();
   }, []);
 
