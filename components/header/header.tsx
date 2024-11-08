@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Sidebar, SidebarContent, SidebarProvider, SidebarTrigger } from "../ui/sidebar";
 
 export const Header = () => {
 
@@ -22,7 +21,7 @@ export const Header = () => {
                 </div>
             </div>
             <div className="header-container">
-                <div className="header-logo"></div>
+                <div className="header-logo" />
                 <div className="links-container">
                     <Link href={"#"} className="header-link">Points d'achat</Link>
                     <Link href={"#"} className="header-link">Points de Collecte</Link>
