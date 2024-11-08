@@ -1,3 +1,10 @@
+.header-logo, .cross-burger-menu, .burger-menu-btn {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 .header-container {
     height: fit-content;
     padding: 8px 28px;
@@ -13,9 +20,6 @@
     width: 64px;
     height: 64px;
     background-image: url('https://i.pinimg.com/236x/7c/66/d5/7c66d5905b8455fed3709a4e236c5362.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
@@ -104,9 +108,6 @@
 
     .cross-burger-menu {
         background-image: url('../../public/cross.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
         width: 42px;
         height: 42px;
     }
@@ -114,9 +115,6 @@
     .burger-menu-btn {
         display: block;
         background-image: url('../../public/burger-menu.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
         width: 42px;
         height: 42px;
         margin-left: auto;
