@@ -3,7 +3,7 @@
     height: 200px;
     background-color: #FFF;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 40% 60%;
     padding: 8px 28px;
     border-top: 0.2px solid #09090b2c;
     margin-top: auto;
@@ -16,9 +16,9 @@
 
 
 .footer-logo {
-    width: 64px;
-    height: 64px;
-    background-image: url('https://i.pinimg.com/236x/7c/66/d5/7c66d5905b8455fed3709a4e236c5362.jpg');
+    width: 300px;
+    height: 80px;
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logo-cd92-novembre-bleu.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -52,7 +52,7 @@
     transition: all ease 0.2s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .footer-container {
         grid-template-columns: none;
     }
@@ -63,5 +63,10 @@
 
     .footer-links-container {
         flex-wrap: wrap;
+    }
+
+    .footer-logo {
+        width: 200px;
+        height: 53px;
     }
 }
