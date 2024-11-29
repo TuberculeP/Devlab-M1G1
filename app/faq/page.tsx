@@ -1,7 +1,5 @@
 "use client";
 
-import useUserHook from "@/hooks/userHook";
-import { useEffect } from "react";
 import FAQContactForm from "@/components/faq/form";
 
 import {
@@ -11,20 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export default function Home() {
-  const { loading, fetchUserData } = useUserHook();
-  useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="grid place-items-center min-h-screen">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
+export default function Faq() {
   return (
     <div className="min-h-screen p-8 pb-20 gap-3 sm:p-20 font-[family-name:var(--font-geist-sans)] flex flex-col">
       <h1 className="text-2xl font-bold my-6">Foire Aux Questions (FAQ)</h1>

@@ -21,9 +21,7 @@ const FAQContactForm = () => {
     },
   });
 
-  const onSubmit = (data: { name: string; email: string; message: string }) => {
-    console.log("Form Data:", data);
-    // TODO: Add API call or logic to handle form submission
+  const onSubmit = () => {
     alert("Votre message a bien été envoyé. Merci de nous avoir contactés !");
   };
 
