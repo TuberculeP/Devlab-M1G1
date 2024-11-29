@@ -306,6 +306,7 @@ const mockCollectPoints = [
   }
 ];
 
+//
 
 export default function CollectPoint() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -343,9 +344,8 @@ export default function CollectPoint() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Points de Collecte</h1>
-      
+    <div className="container mx-auto px-4 pt-24 pb-10">
+      <h1 className="text-2xl font-bold mb-6 ">Points de Collecte</h1>
       <div className="flex gap-4 items-center mb-6">
         <Input 
           placeholder="Rechercher un point de collecte..."
