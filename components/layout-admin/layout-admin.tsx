@@ -8,7 +8,7 @@ export const LayoutAdmin = ({children}: LayoutAdminType) => {
 
     return (
         <>
-            <div className="admin-layout-container">
+            <div className="h-full w-full px-32">
                 <h1>Admin</h1>
                 {children}
             </div>
