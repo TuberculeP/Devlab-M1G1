@@ -8,7 +8,7 @@ export default function Home() {
   const { user, loading, fetchUserData } = useUserHook();
   useEffect(() => {
     fetchUserData();
-  }, [fetchUserData]);
+  }, []);
 
   if (loading) {
     return (
@@ -84,7 +84,7 @@ export default function Home() {
               {user.first_name} {user.last_name}
             </h1>
             <p>{user.id}</p>
-            <img src={user.picture_url} />
+            <Image src={user.picture_url || ""} alt="" />
           </div>
         )}
       </main>
