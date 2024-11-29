@@ -8,7 +8,7 @@ export default function ApiFrontTest() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div>

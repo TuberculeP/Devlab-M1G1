@@ -11,7 +11,7 @@ export const Footer = () => {
                 <div className="footer-logo" />
                 <div className="footer-links-container">
                     <Link href={"#"} className="footer-link">Plan du site</Link>
-                    <Link href={"#"} className="footer-link">Points de Collecte</Link>
+                    <Link href={"/collect"} className="footer-link">Points de Collecte</Link>
                     <Link href={"#"} className="footer-link">Assistance numérique</Link>
                     <Link href={"#"} className="footer-link">FAQ</Link>
                 </div>
