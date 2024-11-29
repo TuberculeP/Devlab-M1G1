@@ -380,7 +380,7 @@ export default function CollectPoint() {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
         {filteredPoints.map((point, index) => (
           <Card key={index} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-6">
