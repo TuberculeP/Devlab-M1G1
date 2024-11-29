@@ -329,8 +329,6 @@ export default function CollectPoint() {
 
   const getMapUrl = () => {
     const baseUrl = "https://www.google.com/maps/embed/v1/search";
-   
-    console.log(api_key);
     //TODO : get precise collect center to narrow the search by city ( ex :q=déchetterie+hauts+de+seine&center not enough )
     if (selectedCity !== "all") {
       if (!cityCoordinates[selectedCity]) {
