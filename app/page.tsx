@@ -8,7 +8,7 @@ export default function Home() {
   const { user, loading, fetchUserData } = useUserHook();
   useEffect(() => {
     fetchUserData();
-  }, []);
+  }, [fetchUserData]);
 
   if (loading) {
     return (
