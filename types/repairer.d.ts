@@ -1,8 +1,10 @@
 export interface Repairer {
     name: string;
     address: string;
-    city: string;
-    urlLocation: string;
-    phoneNumber: string;
+    phone: string;
+    services: string[];
+    supported_devices: string[];
+    site_web: string;
+    coordinates: string;
 }
   
