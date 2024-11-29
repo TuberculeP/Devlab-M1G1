@@ -14,17 +14,19 @@ export const Header = () => {
                     <div className="cross-burger-menu" onClick={() => setHeaderEnabled(!headerEnabled)} />
                     <div className="links-container-burger-menu">
                         <Link href={"#"} className="burger-menu-link">Points d&apos;achat</Link>
-                        <Link href={"#"} className="burger-menu-link">Points de Collecte</Link>
+                        <Link href={'/collect'} className="burger-menu-link">Points de Collecte</Link>
                         <Link href={"#"} className="burger-menu-link">Assistance numérique</Link>
                         <Link href={"#"} className="burger-menu-link">FAQ</Link>
                     </div>
                 </div>
             </div>
             <div className="header-container">
-                <div className="header-logo" />
+                <Link href={"/"}>
+                    <div className="header-logo" />
+                </Link>
                 <div className="links-container">
                     <Link href={"#"} className="header-link">Points d&apos;achat</Link>
-                    <Link href={"#"} className="header-link">Points de Collecte</Link>
+                    <Link href={'/collect'} className="header-link">Points de Collecte</Link>
                     <Link href={"#"} className="header-link">Assistance numérique</Link>
                     <Link href={"#"} className="header-link">FAQ</Link>
                     <div className="burger-menu-btn" onClick={() => setHeaderEnabled(!headerEnabled)} />
