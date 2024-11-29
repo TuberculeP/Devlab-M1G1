@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { FormEvent, useState } from "react";
 
-export default function login() {
+export default function Login() {
 
     const [message, setMessage] = useState<string>("");
 
