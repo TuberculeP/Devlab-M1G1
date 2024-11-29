@@ -39,3 +39,6 @@ next-env.d.ts
 
 # velite
 /.velite/
+
+# IDE
+.idea
