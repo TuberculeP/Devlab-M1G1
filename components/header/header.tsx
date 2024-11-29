@@ -21,7 +21,9 @@ export const Header = () => {
                 </div>
             </div>
             <div className="header-container">
-                <div className="header-logo" />
+                <Link href={"/"}>
+                    <div className="header-logo" />
+                </Link>
                 <div className="links-container">
                     <Link href={"#"} className="header-link">Points d&apos;achat</Link>
                     <Link href={'/collect'} className="header-link">Points de Collecte</Link>

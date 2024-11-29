@@ -6,7 +6,14 @@
     grid-template-columns: 20% 80%;
     padding: 8px 28px;
     border-top: 0.2px solid #09090b2c;
+    margin-top: auto;
 }
+
+.footer-link-logo {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 
 .footer-logo {
     width: 64px;
@@ -18,8 +25,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
-    margin-top: auto;
-    margin-bottom: auto;
+
 }
 
 .footer-logo:hover {
