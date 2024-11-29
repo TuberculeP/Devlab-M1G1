@@ -16,6 +16,14 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {DialogFooter} from "@/components/ui/dialog";
 import {useState} from "react";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select";
 
 const invoices = [
     {
@@ -95,7 +103,7 @@ function FormDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (isOp
                 <Button variant="outline">Add User</Button>
             </DialogTrigger>
             <DialogContent
-                className="sm:max-w-[425px] absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-background p-6 rounded"
+                className="sm:w-[400px] w-[280px] absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-background p-4 rounded"
             >
                 <DialogHeader>
                     <DialogTitle>Add user</DialogTitle>
@@ -103,18 +111,40 @@ function FormDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (isOp
                         Create new user
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
+                <div className="grid grid-rows-4 gap-4 py-4">
+                    <div className="flex justify-start items-center gap-2">
+                        <Label htmlFor="name" className="text-right w-12">
                             Name
                         </Label>
-                        <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                        <Input id="name" value="Pedro Duarte" className="col-span-3 text-sm max-w-38"/>
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                            Username
+                    <div className="flex justify-start items-center gap-2">
+                        <Label htmlFor="role" className="text-right w-12">
+                            Role
                         </Label>
-                        <Input id="username" value="@peduarte" className="col-span-3" />
+                        <Select>
+                            <SelectTrigger className="flex-grow text-sm max-w-38" id="role">
+                                <SelectValue placeholder="Select a role"/>
+                            </SelectTrigger>
+                            <SelectContent className="text-sm">
+                                <SelectGroup>
+                                    <SelectItem value="collecter">Collecter</SelectItem>
+                                    <SelectItem value="reconditioner">Reconditioner</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="flex justify-start items-center gap-2">
+                        <Label htmlFor="email" className="text-right w-12">
+                            Email
+                        </Label>
+                        <Input id="email" type="email" placeholder="example@email.com" className="col-span-3 text-sm max-w-38"/>
+                    </div>
+                    <div className="flex justify-start items-center gap-2">
+                        <Label htmlFor="phone" className="text-right w-12">
+                            Phone
+                        </Label>
+                        <Input id="phone" type="tel" placeholder="01 23 45 67 89" className="col-span-3 text-sm max-w-38"/>
                     </div>
                 </div>
                 <DialogFooter>
