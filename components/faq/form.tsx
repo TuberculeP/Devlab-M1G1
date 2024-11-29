@@ -30,7 +30,7 @@ const FAQContactForm = () => {
   return (
     <section className="mt-10 bg-gray-50 p-6 rounded-lg shadow-md max-w-3xl self-center">
       <h2 className="text-xl font-semibold text-gray-800">
-        Vous n'avez pas trouvé la réponse à votre question ?
+        Vous n&apos;avez pas trouvé la réponse à votre question ?
       </h2>
       <p className="mt-2 text-gray-600">
         Pas de souci, notre équipe est là pour vous aider ! Remplissez le
