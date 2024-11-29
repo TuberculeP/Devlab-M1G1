@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import useUserHook from "@/hooks/userHook";
 import { useEffect } from "react";
-import apiClient from "@/lib/apiClient";
 import {HomePage} from "@/components/pages/Home";
 
 export default function Home() {
-  const { user, loading, fetchUserData } = useUserHook();
+  const { loading, fetchUserData } = useUserHook();
   useEffect(() => {
     fetchUserData();
   }, []);
