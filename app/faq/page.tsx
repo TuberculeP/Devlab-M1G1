@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Home() {
-  const { user, loading, fetchUserData } = useUserHook();
+  const { loading, fetchUserData } = useUserHook();
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -31,16 +31,16 @@ export default function Home() {
       <div>
         Vous avez des questions ? Nous avons les réponses ! Cette section est là
         pour vous guider et répondre aux interrogations les plus fréquentes
-        concernant le reconditionnement d'ordinateurs, les points de collecte et
-        les points de vente. Si vous ne trouvez pas ce que vous cherchez,
-        n'hésitez pas à nous contacter directement via le formulaire en bas de
-        la page.
+        concernant le reconditionnement d&apos;ordinateurs, les points de
+        collecte et les points de vente. Si vous ne trouvez pas ce que vous
+        cherchez, n&apos;hésitez pas à nous contacter directement via le
+        formulaire en bas de la page.
       </div>
       <h2 className="text-xl font-bold mt-6">Questions générales</h2>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>
-            Qu'est-ce que le reconditionnement d'ordinateurs ?
+            Qu&apos;est-ce que le reconditionnement d&apos;ordinateurs ?
           </AccordionTrigger>
           <AccordionContent>
             Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
@@ -57,8 +57,8 @@ export default function Home() {
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>
-            Pourquoi devrais-je acheter un ordinateur reconditionné plutôt qu'un
-            neuf ?
+            Pourquoi devrais-je acheter un ordinateur reconditionné plutôt
+            qu&apos;un neuf ?
           </AccordionTrigger>
           <AccordionContent>
             Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
@@ -70,13 +70,13 @@ export default function Home() {
             enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
             Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
             lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-            elementum tellus.{" "}
+            elementum tellus.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>
             Quelle est la différence entre un ordinateur reconditionné et un
-            ordinateur d'occasion ?
+            ordinateur d&apos;occasion ?
           </AccordionTrigger>
           <AccordionContent>
             Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
@@ -88,7 +88,7 @@ export default function Home() {
             enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
             Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
             lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-            elementum tellus.{" "}
+            elementum tellus.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -114,7 +114,7 @@ export default function Home() {
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>
-            Quels types d'ordinateurs peuvent être donnés pour le
+            Quels types d&apos;ordinateurs peuvent être donnés pour le
             reconditionnement ?
           </AccordionTrigger>
           <AccordionContent>
@@ -127,7 +127,7 @@ export default function Home() {
             enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
             Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
             lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-            elementum tellus.{" "}
+            elementum tellus.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
@@ -144,7 +144,7 @@ export default function Home() {
             enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
             Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
             lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-            elementum tellus.{" "}
+            elementum tellus.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
@@ -162,7 +162,7 @@ export default function Home() {
             enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
             Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
             lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-            elementum tellus.{" "}
+            elementum tellus.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
