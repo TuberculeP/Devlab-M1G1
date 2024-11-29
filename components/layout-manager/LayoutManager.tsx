@@ -16,7 +16,7 @@ export const LayoutManager = ({ children }: LayoutManagerType) => {
 
     return (
         <>
-            {!pathname.startsWith("/admin")?
+            {!pathname.startsWith("/admin") ?
                 <>
                     <Header />
                     <section>
@@ -29,8 +29,6 @@ export const LayoutManager = ({ children }: LayoutManagerType) => {
                     <Admin />
                 </LayoutAdmin>
             }
-
-
         </>
     )
 }

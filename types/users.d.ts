@@ -6,3 +6,8 @@ export interface PgUser {
   email: string;
   picture_url?: string;
 }
+
+export interface LoginDataUser {
+  email: string,
+  password: string
+}
