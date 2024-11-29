@@ -189,7 +189,7 @@ export default function PurchasePoint() {
   
   return (
     <div className="container mx-auto px-4 pt-24 pb-10">
-      <h1 className="text-2xl font-bold mb-6 ">Points d'achats</h1>
+      <h1 className="text-2xl font-bold mb-6 ">Points d&apos;achat</h1>
       <div className="flex gap-4 items-center mb-6">
         <Input 
           placeholder="Rechercher un point d'achat..."
@@ -265,7 +265,7 @@ export default function PurchasePoint() {
 
         {filteredPoints.length === 0 && (
           <p className="text-center text-gray-500 col-span-2">
-            Aucun point d'achats trouvé pour votre recherche.
+            Aucun points d&apos;achat trouvé pour votre recherche.
           </p>
         )}
       </div>

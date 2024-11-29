@@ -145,7 +145,7 @@ export default function FindARepairer() {
     const [selectedCity, setSelectedCity] = useState("all");
     const [selectedDevice, setSelectedDevice] = useState("all");
     const [selectedRepairer, setSelectedRepairer] = useState(null);
-    const [nearestRepairer, setNearestRepairer] = useState(null);
+    const [nearestRepairer] = useState(null);
   
     const filteredRepairer = repairer.filter((repairer) => {
       if (selectedCity !== "all" && !repairer.address.includes(selectedCity)) {
