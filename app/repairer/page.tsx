@@ -10,7 +10,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
-
+import type { Repairer } from "@/types/repairer";
 
 //TODO move this to backend 
 const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
@@ -144,7 +144,7 @@ export default function FindARepairer() {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCity, setSelectedCity] = useState("all");
     const [selectedDevice, setSelectedDevice] = useState("all");
-    const [selectedRepairer, setSelectedRepairer] = useState(null);
+    const [selectedRepairer, setSelectedRepairer] = useState({} as Repairer);
     const [nearestRepairer] = useState(null);
   
     const filteredRepairer = repairer.filter((repairer) => {
@@ -167,7 +167,7 @@ export default function FindARepairer() {
   
     const handleCityChange = (value: string) => setSelectedCity(value);
   
-    const handleCardClick = (repairer: object) => setSelectedRepairer(repairer);
+    const handleCardClick = (repairer: Repairer) => setSelectedRepairer(repairer);
   
     const mapUrl = selectedRepairer
         ? `https://www.google.com/maps/embed/v1/place?key=${api_key}&q=${selectedRepairer.address}`
