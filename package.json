@@ -6,7 +6,9 @@
     "dev": "tsx watch -r dotenv/config server/src/main.ts",
     "build": "velite && next build && tsc -p server",
     "start": "NODE_ENV=production node dist/main.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -16,6 +18,7 @@
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-form": "^0.1.0",
     "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.3",

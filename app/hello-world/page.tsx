@@ -7,7 +7,7 @@ export default function HelloWorld() {
   const { user, fetchUserData } = useUserHook();
   useEffect(() => {
     fetchUserData();
-  }, []);
+  }, [fetchUserData]);
   if (user) {
     return (
       <div>

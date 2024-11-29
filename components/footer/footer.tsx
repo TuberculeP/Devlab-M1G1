@@ -11,7 +11,7 @@ export const Footer = () => {
           <Link href={"#"} className="footer-link">
             Plan du site
           </Link>
-          <Link href={"#"} className="footer-link">
+          <Link href={"/collect"} className="footer-link">
             Points de Collecte
           </Link>
           <Link href={"#"} className="footer-link">

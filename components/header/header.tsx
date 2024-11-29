@@ -22,7 +22,7 @@ export const Header = () => {
             <Link href={"#"} className="burger-menu-link">
               Points d&apos;achat
             </Link>
-            <Link href={"#"} className="burger-menu-link">
+            <Link href={"/collect"} className="burger-menu-link">
               Points de Collecte
             </Link>
             <Link href={"#"} className="burger-menu-link">
@@ -40,13 +40,13 @@ export const Header = () => {
           <Link href={"#"} className="header-link">
             Points d&apos;achat
           </Link>
-          <Link href={"#"} className="header-link">
+          <Link href={"/collect"} className="header-link">
             Points de Collecte
           </Link>
           <Link href={"#"} className="header-link">
             Assistance numérique
           </Link>
-          <Link href={"/faq"} className="header-link">
+          <Link href={"#"} className="header-link">
             FAQ
           </Link>
           <div
