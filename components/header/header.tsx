@@ -46,7 +46,7 @@ export const Header = () => {
           <Link href={"#"} className="header-link">
             Assistance numérique
           </Link>
-          <Link href={"#"} className="header-link">
+          <Link href={"/faq"} className="header-link">
             FAQ
           </Link>
           <div
