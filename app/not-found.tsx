@@ -11,7 +11,7 @@ export default function NotFound() {
       <section className="not-found-container">
         <div className="flex h-[100%] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
           <p className="z-10 whitespace-pre-wrap text-center text-8xl font-medium tracking-tighter text-black dark:text-white">
-            Oups... La page n'existe pas
+            Oups... La page n&apos;existe pas
           </p>
           <DotPattern
             className={cn(
