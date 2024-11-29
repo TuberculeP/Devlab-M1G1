@@ -17,9 +17,9 @@
 }
 
 .header-logo {
-    width: 64px;
-    height: 64px;
-    background-image: url('https://i.pinimg.com/236x/7c/66/d5/7c66d5905b8455fed3709a4e236c5362.jpg');
+    width: 300px;
+    height: 80px;
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logo-cd92-novembre-bleu.png');
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
@@ -56,17 +56,6 @@
 }
 
 @media (max-width: 1024px) {
-    .header-container {
-        grid-template-columns: 10% 90%;
-        padding: 4px 16px;
-    }
-
-    .header-link {
-        padding: 4px 16px;
-    }
-}
-
-@media (max-width: 768px) {
 
     .header-container {
         padding: 8px 16px;
@@ -77,8 +66,6 @@
     }
 
     .header-logo {
-        width: 42px;
-        height: 42px;
         margin-right: auto;
     }
 
@@ -119,6 +106,8 @@
         height: 42px;
         margin-left: auto;
         cursor: pointer;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 
     .links-container-burger-menu {
@@ -155,5 +144,10 @@
     .burger-menu-link {
         margin: auto;
         width: 70%;
+    }
+
+    .header-logo {
+        width: 200px;
+        height: 53px;
     }
 }
