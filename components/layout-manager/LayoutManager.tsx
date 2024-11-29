@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect, useState } from "react"
+import { ReactNode } from "react"
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
 import { usePathname } from "next/navigation";
@@ -13,7 +13,7 @@ type LayoutManagerType = {
 export const LayoutManager = ({ children }: LayoutManagerType) => {
 
     const pathname = usePathname();
-    
+
     return (
         <>
             {!pathname.startsWith("/admin")?
