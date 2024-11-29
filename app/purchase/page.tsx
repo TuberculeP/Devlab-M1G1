@@ -10,7 +10,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
-
+import type { PurchasePoint } from "@/types/purchasePoint";
 
 //TODO move this to backend 
 const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
@@ -148,7 +148,7 @@ const mockPurchasePoints = [
 export default function PurchasePoint() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCity, setSelectedCity] = useState("all");
-  const [selectedRepairer, setSelectedRepairer] = useState(null);
+  const [selectedPurchase, setSelectedPurchase] = useState(null as PurchasePoint | null);
 
   const filteredPoints = mockPurchasePoints.filter(point => {
     const matchesSearch = 
@@ -165,7 +165,7 @@ export default function PurchasePoint() {
     setSelectedCity(value);
   };
 
-  const handleCardClick = (repairer: object) => setSelectedRepairer(repairer);
+  const handleCardClick = (purchase: PurchasePoint) => setSelectedPurchase(purchase);
   
 
   const getMapUrl = () => {
@@ -178,8 +178,8 @@ export default function PurchasePoint() {
       const coordinates = cityCoordinates[selectedCity];
       return `${baseUrl}?key=${api_key}&q=electronics+store+${selectedCity}&center=${coordinates}&zoom=14`;
     }
-    if(selectedRepairer){
-      return `${baseUrl}?key=${api_key}&q=electronics+store+${selectedRepairer.address}&zoom=14`;
+    if(selectedPurchase){
+      return `${baseUrl}?key=${api_key}&q=electronics+store+${selectedPurchase.address}&zoom=14`;
     }
     console.log(cityCoordinates.all);
     return `${baseUrl}?key=${api_key}&q=electronics+store+hauts+de+seine&center=${cityCoordinates.all}&zoom=11`;
