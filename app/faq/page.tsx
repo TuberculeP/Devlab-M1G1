@@ -12,7 +12,7 @@ import useUserHook from "@/hooks/userHook";
 import { useEffect } from "react";
 
 export default function Faq() {
-  const { user, loading, fetchUserData } = useUserHook();
+  const { loading, fetchUserData } = useUserHook();
   useEffect(() => {
     fetchUserData();
   }, []);
