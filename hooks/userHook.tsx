@@ -22,21 +22,7 @@ const useUserHook = () => {
     }
   };
 
-  useEffect(() => {
-    // Abonnement à l'événement personnalisé 'refetch-data'
-    const handleRefetch = () => {
-      fetchUserData();
-    };
-
-    window.addEventListener("refetch-user", handleRefetch);
-
-    // Cleanup lors du démontage du composant
-    return () => {
-      window.removeEventListener("refetch-user", handleRefetch);
-    };
-  }, []); // L'effet ne s'exécute qu'au montage/démontage
-
-  return { user, loading, isConnected, fetchUserData };
+  return { user, loading, isConnected, fetchUserData, setData };
 };
 
 export default useUserHook;

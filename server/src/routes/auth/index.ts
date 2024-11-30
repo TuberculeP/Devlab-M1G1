@@ -5,7 +5,7 @@ import { localRouter } from "./local.route";
 const authRouter = Router();
 
 authRouter.use("/google", googleRouter);
-authRouter.use("/local", localRouter)
+authRouter.use("/local", localRouter);
 
 // /auth/me
 authRouter.get("/me", (req, res) => {
