@@ -3,7 +3,7 @@ import path from "path";
 import express from "express";
 import next from "next";
 import { pgConnect } from "./config/db.config";
-import { initializePassportWithGoogle } from "./config/passport.config";
+import { initializePassport } from "./config/passport.config";
 import router from "./routes";
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -20,7 +20,7 @@ dotenv.config({
 
 // Init all configs
 pgConnect();
-initializePassportWithGoogle();
+initializePassport();
 
 const { SESSION_SECRET } = process.env;
 
@@ -55,8 +55,11 @@ server.use(router);
 // Start the server
 app.prepare().then(() => {
   // Express.js routes and middleware go here
-  server.get("/api/custom-route", (req, res) => {
-    res.json({ message: "This is a custom API route." });
+  server.use("/admin", (req, res, next) => {
+    if (!req.isAuthenticated()) {
+      return res.redirect("/login");
+    }
+    next();
   });
 
   // nextjs

@@ -1,9 +1,10 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { Strategy as LocalStrategy } from "passport-local";
 import usersService from "../domains/users/users.service";
 import type { PgUser } from "../../../types/users";
 
-function initializePassportWithGoogle() {
+function initializePassport() {
   const { GOOGLE_AUTH_CLIENT, GOOGLE_AUTH_SECRET, EXPRESS_URL } = process.env;
 
   if (!GOOGLE_AUTH_CLIENT || !GOOGLE_AUTH_SECRET || !EXPRESS_URL) {
@@ -11,7 +12,6 @@ function initializePassportWithGoogle() {
   }
 
   // access passport login via /auth/google
-
   passport.use(
     new GoogleStrategy(
       {
@@ -21,10 +21,33 @@ function initializePassportWithGoogle() {
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
-          const user: PgUser = await usersService.findOrCreateUser(profile);
+          const user: PgUser = await usersService.findOrCreateGoogleUser(
+            profile
+          );
           done(null, user);
         } catch (err) {
           done(err, false);
+        }
+      }
+    )
+  );
+
+  // access pasport login via /auth/local
+  passport.use(
+    new LocalStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+      },
+      async (email, password, callback) => {
+        try {
+          const user = await usersService.findLocalUser({
+            email,
+            password,
+          });
+          callback(null, user);
+        } catch (err) {
+          callback(err, false);
         }
       }
     )
@@ -37,6 +60,7 @@ function initializePassportWithGoogle() {
   passport.deserializeUser(async (id: string, done) => {
     try {
       const user = await usersService.findById(id);
+      delete user.password;
       done(null, user);
     } catch (err) {
       done(err, false);
@@ -44,4 +68,4 @@ function initializePassportWithGoogle() {
   });
 }
 
-export { initializePassportWithGoogle };
+export { initializePassport };
