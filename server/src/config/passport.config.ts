@@ -45,11 +45,6 @@ function initializePassport() {
             email,
             password,
           });
-          console.log(
-            "\x1b[42m%s\x1b[0m",
-            "server/src/config/passport.config.ts:48 user",
-            user
-          );
           callback(null, user);
         } catch (err) {
           callback(err, false);
