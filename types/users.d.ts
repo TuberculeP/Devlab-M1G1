@@ -5,4 +5,10 @@ export interface PgUser {
   last_name: string;
   email: string;
   picture_url?: string;
+  password?: string;
+}
+
+export interface LoginDataUser {
+  email: string;
+  password: string;
 }

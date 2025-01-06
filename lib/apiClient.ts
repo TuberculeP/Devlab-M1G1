@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
-type ApiClientADR<T> = [T, null] | [null, Error];
+type ApiClientADR<T> = [T, null] | [null, AxiosError];
 
 const postRequest = async <T>(
   url: string,
@@ -12,14 +12,20 @@ const postRequest = async <T>(
       withCredentials: true,
     });
     if (status !== 200) {
-      return [null, new Error("Request failed")];
+      return [null, new AxiosError("Request failed")];
     }
     return [data, null];
   } catch (e) {
-    if (e instanceof Error) {
-      return [null, e];
+    if (e instanceof AxiosError) {
+      return [
+        null,
+        {
+          ...e,
+          message: e.response?.data || e.message,
+        },
+      ];
     } else {
-      return [null, new Error("Request failed")];
+      return [null, new AxiosError("Request failed")];
     }
   }
 };
@@ -31,14 +37,14 @@ const getRequest = async <T>(url: string): Promise<ApiClientADR<T>> => {
       withCredentials: true,
     });
     if (status !== 200) {
-      return [null, new Error("Request failed")];
+      return [null, new AxiosError("Request failed")];
     }
     return [data, null];
   } catch (e) {
-    if (e instanceof Error) {
+    if (e instanceof AxiosError) {
       return [null, e];
     } else {
-      return [null, new Error("Request failed")];
+      return [null, new AxiosError("Request failed")];
     }
   }
 };

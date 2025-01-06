@@ -1,13 +1,14 @@
 import { Profile } from "passport";
 import { pg } from "../../config/db.config";
 import type { PgUser } from "../../../../types/users";
+import ERRORS from "../../../../constants/errors";
+import { createHash } from "node:crypto";
 
-async function findOrCreateUser(profile: Profile): Promise<PgUser> {
+async function findOrCreateGoogleUser(profile: Profile): Promise<PgUser> {
   // check if user exists
-  const { rows } = await pg.query<PgUser>(
-    `SELECT * FROM users WHERE google_id = $1`,
-    [profile.id]
-  );
+  const { rows } = await pg.query<PgUser>(`SELECT * FROM users WHERE $ = $1`, [
+    profile.id,
+  ]);
   if (rows.length && rows[0]?.google_id === profile.id) {
     return rows[0];
   }
@@ -22,6 +23,29 @@ async function findOrCreateUser(profile: Profile): Promise<PgUser> {
   return newRows[0];
 }
 
+async function findLocalUser(params: {
+  email: string;
+  password: string;
+}): Promise<PgUser | false> {
+  const { email, password } = params;
+  if (!email) throw new Error(ERRORS.INVALID_EMAIL);
+  if (!password) throw new Error(ERRORS.INVALID_PASSWORD);
+  const { rows } = await pg.query<PgUser>(
+    `SELECT * FROM users WHERE email = $1`,
+    [email]
+  );
+  if (rows.length) {
+    const hashedPassword = createHash("sha256").update(password).digest("hex");
+    if (rows[0].password === hashedPassword) {
+      return rows[0];
+    } else {
+      throw new Error(ERRORS.INVALID_PASSWORD);
+    }
+  } else {
+    return false;
+  }
+}
+
 async function findById(id: string): Promise<PgUser> {
   const { rows } = await pg.query<PgUser>(`SELECT * FROM users WHERE id = $1`, [
     id,
@@ -29,6 +53,6 @@ async function findById(id: string): Promise<PgUser> {
   return rows[0];
 }
 
-const usersService = { findOrCreateUser, findById };
+const usersService = { findOrCreateGoogleUser, findById, findLocalUser };
 
 export default usersService;
