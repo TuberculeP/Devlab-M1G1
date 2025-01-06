@@ -1,7 +1,6 @@
 import { Profile } from "passport";
 import { pg } from "../../config/db.config";
 import type { PgUser } from "../../../../types/users";
-import ERRORS from "../../../../constants/errors";
 import { createHash } from "node:crypto";
 
 async function findOrCreateGoogleUser(profile: Profile): Promise<PgUser> {
@@ -28,8 +27,8 @@ async function findLocalUser(params: {
   password: string;
 }): Promise<PgUser | false> {
   const { email, password } = params;
-  if (!email) throw new Error(ERRORS.INVALID_EMAIL);
-  if (!password) throw new Error(ERRORS.INVALID_PASSWORD);
+  if (!email) throw new Error("Invalid email");
+  if (!password) throw new Error("Invalid password");
   const { rows } = await pg.query<PgUser>(
     `SELECT * FROM users WHERE email = $1`,
     [email]
@@ -39,7 +38,7 @@ async function findLocalUser(params: {
     if (rows[0].password === hashedPassword) {
       return rows[0];
     } else {
-      throw new Error(ERRORS.INVALID_PASSWORD);
+      throw new Error("Invalid password");
     }
   } else {
     return false;
