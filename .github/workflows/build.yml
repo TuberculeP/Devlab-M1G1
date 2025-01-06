@@ -24,6 +24,12 @@ jobs:
 
       - name: Start the server
         run: npm run start &
+        env:
+          EXPRESS_URL: ${{ secrets.EXPRESS_URL }}
+          GOOGLE_AUTH_CLIENT: ${{ secrets.GOOGLE_AUTH_CLIENT }}
+          GOOGLE_AUTH_SECRET: ${{ secrets.GOOGLE_AUTH_SECRET }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
 
       - name: Check server is running
         run: curl --max-time 10 --silent --fail http://localhost:3000
