@@ -24,12 +24,6 @@ jobs:
 
       - name: Start the server
         run: npm run start &
-        env:
-          EXPRESS_URL: "http://localhost:3000"
-          GOOGLE_AUTH_CLIENT: "xxx"
-          GOOGLE_AUTH_SECRET: "yyy"
-          POSTGRES_URL: "postgres://a:b@localhost:5432/c"
-          SESSION_SECRET: "don't look at me"
 
       - name: Check server is running
         run: curl --max-time 10 --silent --fail http://localhost:3000
