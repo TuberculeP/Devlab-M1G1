@@ -135,7 +135,7 @@ async function remove(id: number): Promise<boolean> {
     'DELETE FROM collect_points WHERE id = $1',
     [id]
   );
-  return rowCount > 0;
+  return (rowCount ?? 0) > 0;
 }
 
 const collectPointsService = {

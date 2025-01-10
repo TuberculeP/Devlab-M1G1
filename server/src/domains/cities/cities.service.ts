@@ -60,7 +60,7 @@ async function deleteCity(id: number): Promise<boolean> {
     'DELETE FROM cities WHERE id = $1',
     [id]
   );
-  return rowCount > 0;
+  return (rowCount ?? 0) > 0;
 }
 
 const citiesService = {
@@ -68,7 +68,7 @@ const citiesService = {
   getCityById,
   createCity,
   updateCity,
-  deleteCity
+  deleteCity,
 };
 
 export default citiesService;
