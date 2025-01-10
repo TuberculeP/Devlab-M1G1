@@ -3,6 +3,7 @@ import { getAllFooBars } from "../domains/fooBar/fooBar.service";
 import { authRouter } from "./auth";
 import collectPointsRouter from "./collect-points.routes";
 import citiesRouter from "./cities.routes";
+import { adminRouter } from "./admin";
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.get("/api/foo-bar", async (req, res) => {
 
 // auth routes
 router.use("/auth", authRouter);
+router.use("/admin", adminRouter);
 
 // collect points routes
 router.use("/api/collect-points", collectPointsRouter);
