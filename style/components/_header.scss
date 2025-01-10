@@ -14,12 +14,14 @@
     position: fixed;
     width: 100%;
     background-color: #FFF;
+    z-index: 3;
 }
 
 .header-logo {
-    width: 300px;
+    width: 404px;
     height: 80px;
-    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logo-cd92-novembre-bleu.png');
+    scale: 0.8;
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
