@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import useUserHook from "@/hooks/userHook";
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Faq() {
@@ -41,16 +42,8 @@ export default function Faq() {
                 Qu&apos;est-ce que le reconditionnement d&apos;ordinateurs ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+              Le reconditionnement d&apos;ordinateurs est un processus par lequel des ordinateurs usagés,
+              défectueux ou obsolètes sont réparés, remis à niveau, et testés pour leur donner une seconde vie.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -59,16 +52,8 @@ export default function Faq() {
                 qu&apos;un neuf ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+                Acheter un ordinateur reconditionné plutôt qu&apos;un neuf présente des avantages
+                économiques, écologiques et pratiques.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -77,16 +62,9 @@ export default function Faq() {
                 ordinateur d&apos;occasion ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+                Un ordinateur reconditionné est testé, réparé, et remis à neuf pour garantir son bon
+                fonctionnement, souvent accompagné d&apos;une garantie. En revanche, un ordinateur d&apos;occasion est
+                vendu tel quel, sans vérifications ni réparations, et généralement sans garantie.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -99,16 +77,10 @@ export default function Faq() {
                 reconditionner ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+                Pour donner votre ordinateur à reconditionner, vous pouvez rejoindre un centre de collecte.
+                Vous pouvez en trouver un sur ce <Link href={"/collect"}>lien</Link>.
+                Assurez-vous avant cela de sauvegarder
+                vos données, puis supprimez-les avant de donner l&apos;appareil.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -117,16 +89,9 @@ export default function Faq() {
                 reconditionnement ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+                La plupart des ordinateurs peuvent être donnés pour reconditionnement, qu&apos;ils soient portables
+                ou de bureau. Ils doivent être en état réparable, même s&apos;ils sont anciens ou légèrement
+                endommagés. Les appareils très obsolètes ou irréparables sont généralement recyclés.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -134,34 +99,26 @@ export default function Faq() {
                 Dois-je supprimer mes données avant de donner mon ordinateur ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+                Oui, vous devez supprimer vos données avant de donner votre ordinateur.
+                Sauvegardez vos fichiers importants, puis utilisez un logiciel de réinitialisation ou
+                d&apos;effacement sécurisé pour protéger vos informations personnelles.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
+            <AccordionItem value="item-4">
               <AccordionTrigger>
                 Quelles sont les étapes du processus de collecte et de
                 reconditionnement ?
               </AccordionTrigger>
               <AccordionContent>
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora
-                torquent per conubia nostra, per inceptos himenaeos. Praesent
-                auctor purus luctus enim egestas, ac scelerisque ante pulvinar.
-                Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor
-                urna. Curabitur vel bibendum lorem. Morbi convallis convallis
-                diam sit amet lacinia. Aliquam in elementum tellus.
+              Les étapes du processus de collecte et de reconditionnement sont :
+              <ul className="faq-list">
+              <li>- Collecte : Récupération des ordinateurs dans un point de collecte.</li>
+              <li>- Évaluation : Inspection pour déterminer leur état et réparabilité par Emaus Connect.</li>
+              <li>- Réparation : Remplacement ou réparation des composants défectueux.</li>
+              <li>- Mise à jour : Installation de nouveaux composants et logiciels.</li>
+              <li>- Tests : Vérification des performances et fiabilité.</li>
+              <li>- Revente ou don : Les appareils remis à neuf sont proposés avec garantie.</li>
+              </ul>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
