@@ -1,5 +1,6 @@
 "use client";
 import useUserHook from "@/hooks/userHook";
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Admin() {
@@ -12,7 +13,14 @@ export default function Admin() {
   return (
     <>
       <h1>Welcome admin !</h1>
-      <pre>{JSON.stringify(user)}</pre>
+
+      <ul>
+        <li>
+          <Link href={"/admin/scan"} className="burger-menu-link">
+            Ma scanette
+          </Link>
+        </li>
+      </ul>
     </>
   );
 }

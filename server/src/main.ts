@@ -8,6 +8,9 @@ import router from "./routes";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
+// DEVONLY - Utile pour la partie scannette en local
+import https from "https";
+import fs from "fs";
 
 // Load environment variables
 const dev = process.env.NODE_ENV !== "production";
@@ -67,7 +70,18 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(3000, () => {
-    console.log("> Ready on http://localhost:3000");
+  // Comment if you want to use HTTP
+  // server.listen(3000, () => {
+  //   console.log("> Ready on http://localhost:3000");
+  // });
+
+  // DEVONLY - Utile pour la partie scannette en local
+  const sslOptions = {
+    key: fs.readFileSync("localhost.key"),
+    cert: fs.readFileSync("localhost.crt"),
+  };
+  // Lancer le serveur HTTPS
+  https.createServer(sslOptions, server).listen(3000, () => {
+    console.log("HTTPS Server running at https://localhost:3000");
   });
 });
