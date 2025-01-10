@@ -14,11 +14,11 @@ export const Header = () => {
                 <div className="burger-menu-container">
                     <div className="cross-burger-menu" onClick={() => setHeaderEnabled(!headerEnabled)} />
                     <div className="links-container-burger-menu">
-                        <Link href={"/purchase"} className="burger-menu-link">Points d&apos;achat</Link>
-                        <Link href={'/collect'} className="burger-menu-link">Points de Collecte</Link>
-                        <Link href={"/repairer"} className="header-link">Trouver un réparateur</Link>
-                        <Link href={"#"} className="burger-menu-link">Assistance numérique</Link>
-                        <Link href={"/faq"} className="burger-menu-link">FAQ</Link>
+                        <Link href={"/purchase"} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">Points d&apos;achat</Link>
+                        <Link href={'/collect'} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">Points de Collecte</Link>
+                        <Link href={"/repairer"} onClick={() => setHeaderEnabled(!headerEnabled)} className="header-link">Trouver un réparateur</Link>
+                        <Link href={"#"} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">Assistance numérique</Link>
+                        <Link href={"/faq"} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">FAQ</Link>
                     </div>
                 </div>
             </div>
