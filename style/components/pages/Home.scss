@@ -9,6 +9,41 @@ ul span {
     height: 1em;
 }
 
-.faq-list {
-    text-align: start;
+.home-page-hero {
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/_processed_/e/0/csm_L_ELEGANCE_EN_CE_JARDIN_OR_1e85bf35c7.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.filter-home-hero {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: rgba(62, 62, 62, 0.51);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
+    border: 1px solid rgba(62, 62, 62, 0.3);
+}
+
+.container-title-home-hero {
+    margin: auto;
+}
+
+.container-title-home-hero > h1 {
+    color: white;
+    font-size: 3.125em;
+}
+
+.bg-home-page-section-1 {
+    background-image: url('../../../public/2021-06-Bandeau-Proprete-rubrique-dechets-electroniques.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-home-page-section-2 {
+    background-image: url('../../../public/SEIA-Electronique-reparation-en-tete-cartes-electroniques.jpg');
+    background-position: center;
+    background-size: cover;
 }

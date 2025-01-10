@@ -1,6 +1,7 @@
 "use client";
 
 import FAQContactForm from "@/components/faq/form";
+import '@/style/components/pages/Faq.scss';
 
 import {
   Accordion,
