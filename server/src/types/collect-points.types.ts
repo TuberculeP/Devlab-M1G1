@@ -7,7 +7,8 @@ export interface CollectPoint {
   url_location: string;
   phone_number: string;
   city_id: number;
+  city: string;
   type: CollectPointType;
 }
 
-export type CollectPointInput = Omit<CollectPoint, 'id'>;
+export type CollectPointInput = Omit<CollectPoint, 'id' | 'city'>;

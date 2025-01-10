@@ -60,16 +60,14 @@ async function create(data: CollectPointInput): Promise<CollectPoint> {
     `INSERT INTO collect_points (
       name,
       address,
-      city,
       city_id,
       phone_number,
       url_location,
       type
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+    ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
     [
       data.name,
       data.address,
-      data.city,
       data.city_id,
       data.phone_number,
       data.url_location,
