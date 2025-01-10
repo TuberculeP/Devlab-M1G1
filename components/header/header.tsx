@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button"
 
 export const Header = () => {
-  const [headerEnabled, setHeaderEnabled] = useState<boolean>(false);
+    const [headerEnabled, setHeaderEnabled] = useState<boolean>(false);
 
 
 
@@ -14,11 +15,26 @@ export const Header = () => {
                 <div className="burger-menu-container">
                     <div className="cross-burger-menu" onClick={() => setHeaderEnabled(!headerEnabled)} />
                     <div className="links-container-burger-menu">
-                        <Link href={"/purchase"} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">Points d&apos;achat</Link>
-                        <Link href={'/collect'} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">Points de Collecte</Link>
-                        <Link href={"/repairer"} onClick={() => setHeaderEnabled(!headerEnabled)} className="header-link">Trouver un réparateur</Link>
-                        <Link href={"#"} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">Assistance numérique</Link>
-                        <Link href={"/faq"} onClick={() => setHeaderEnabled(!headerEnabled)} className="burger-menu-link">FAQ</Link>
+                        <Link href={"/purchase"} onClick={() => setHeaderEnabled(!headerEnabled)}>
+                            <Button className="burger-menu-link" variant="link">Points d&apos;achat
+                            </Button>
+                        </Link>
+                        <Link href={'/collect'} onClick={() => setHeaderEnabled(!headerEnabled)}>
+                            <Button className="burger-menu-link" variant="link">Points de Collecte
+                            </Button>
+                        </Link>
+                        <Link href={"/repairer"} onClick={() => setHeaderEnabled(!headerEnabled)}>
+                            <Button className="burger-menu-link" variant="link">Trouver un réparateur
+                            </Button>
+                        </Link>
+                        <Link href={"#"} onClick={() => setHeaderEnabled(!headerEnabled)}>
+                            <Button className="burger-menu-link" variant="link">Assistance numérique
+                            </Button>
+                        </Link>
+                        <Link href={"/faq"} onClick={() => setHeaderEnabled(!headerEnabled)}>
+                            <Button className="burger-menu-link" variant="link">FAQ
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -27,11 +43,24 @@ export const Header = () => {
                     <div className="header-logo" />
                 </Link>
                 <div className="links-container">
-                    <Link href={"/purchase"} className="header-link">Points d&apos;achat</Link>
-                    <Link href={'/collect'} className="header-link">Points de Collecte</Link>
-                    <Link href={"/repairer"} className="header-link">Trouver un réparateur</Link>
-                    <Link href={"#"} className="header-link">Assistance numérique</Link>
-                    <Link href={"/faq"} className="header-link">FAQ</Link>
+                    <Link href={"/purchase"} className="header-link">
+                        <Button variant="link">Points d&apos;achat</Button>
+                    </Link>
+                    <Link href={'/collect'} className="header-link">
+                        <Button variant="link">Points de Collecte</Button>
+                    </Link>
+                    <Link href={"/repairer"} className="header-link">
+                        <Button variant="link">Trouver un réparateur
+                        </Button>
+                    </Link>
+                    <Link href={"#"} className="header-link">
+                        <Button variant="link">Assistance numérique
+                        </Button>
+                    </Link>
+                    <Link href={"/faq"} className="header-link">
+                        <Button variant="link">FAQ
+                        </Button>
+                    </Link>
                     <div className="burger-menu-btn" onClick={() => setHeaderEnabled(!headerEnabled)} />
                 </div>
             </div>
