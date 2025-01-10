@@ -6,7 +6,7 @@
 }
 
 
-.header-container {
+.header-container, .header-container-dark {
     height: fit-content;
     padding: 8px 28px;
     border-bottom: 0.2px solid #09090b2c;
@@ -14,8 +14,17 @@
     grid-template-columns: 40% 60%;
     position: fixed;
     width: 100%;
-    background-color: #FFF;
+    transition: all ease 0.2s;
     z-index: 2;
+}
+
+.header-container {
+    background-color: #FFF;
+}
+
+.header-container-dark {
+    background-color: #2a2d30;
+
 }
 
 .header-logo {
@@ -46,10 +55,6 @@
 
 .burger-menu-enabled, .burger-menu-disabled {
     display: none;
-}
-
-.burger-menu-container {
-    z-index: 4;
 }
 
 @media (max-width: 1024px) {

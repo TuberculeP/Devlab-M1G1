@@ -1,8 +1,13 @@
 import '@/style/components/pages/Home.scss';
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { LightAndDarkModeContext } from '@/context/lightAndDarkMode';
+import { useContext } from 'react';
 
 export const HomePage = () => {
+
+    const { isDark } = useContext(LightAndDarkModeContext)!;
+
     return (
         <>
             <div className="home-page-hero h-dvh w-full flex flex-col items-center justify-center bg-gray-100">
@@ -22,7 +27,6 @@ export const HomePage = () => {
                     </div>
                 </div>
                 <div className="w-full h-full sm:w-7/12 bg-home-page-section-1 rounded-lg">
-
                 </div>
             </div>
             <div className="h-dvh w-dvw flex flex-col justify-center items-center sm:flex-row gap-8 p-8">
