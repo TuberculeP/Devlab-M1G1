@@ -92,11 +92,6 @@ async function update(id: number, data: Partial<CollectPointInput>): Promise<Col
     values.push(data.address);
     paramCount++;
   }
-  if (data.city !== undefined) {
-    updates.push(`city = $${paramCount}`);
-    values.push(data.city);
-    paramCount++;
-  }
   if (data.city_id !== undefined) {
     updates.push(`city_id = $${paramCount}`);
     values.push(data.city_id);
