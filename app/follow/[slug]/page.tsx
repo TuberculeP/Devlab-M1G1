@@ -27,22 +27,10 @@ export default function FollowProduct({
       const [response, responseError] = await apiClient.getRequest<PgProduct>(
         "/products/follow/" + code
       );
-      console.log(
-        "\x1b[44m%s\x1b[0m",
-        "app/follow/[slug]/page.tsx:31 response, respoonseError",
-        response,
-        responseError
-      );
+
       if (responseError) return;
       setProduct(response);
       setLoading(false);
-      console.log(
-        "\x1b[44m%s\x1b[0m",
-        "app/follow/[slug]/page.tsx:40 product, loading",
-        response,
-        product,
-        loading
-      );
     };
     fetchProduct();
   }, []);
@@ -62,15 +50,13 @@ export default function FollowProduct({
                     <img
                       className="object-cover w-full h-full"
                       src={product.picture_url}
-                      alt={product.product_name}
+                      alt={product.name}
                     />
                   )}
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="flex justify-center items-center gap-4 w-fit">
-                    <h1 className="text-2xl font-bold">
-                      {product.product_name}
-                    </h1>
+                    <h1 className="text-2xl font-bold">{product.name}</h1>
                     <div
                       className={`px-2 py-1 rounded-full w-fit text-xs ${
                         product.status === "recycled"
@@ -90,9 +76,7 @@ export default function FollowProduct({
                   </div>
                   <div>
                     <p>Description Client :</p>
-                    <p className="text-justify">
-                      {product.product_description}
-                    </p>
+                    <p className="text-justify">{product.description}</p>
                   </div>
                 </div>
               </div>

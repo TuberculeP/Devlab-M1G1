@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import useUserHook from "@/hooks/userHook";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -14,13 +15,11 @@ export default function Admin() {
     <>
       <h1>Welcome admin !</h1>
 
-      <ul>
-        <li>
-          <Link href={"/admin/scan"} className="burger-menu-link">
-            Ma scanette
-          </Link>
-        </li>
-      </ul>
+      <div className="flex flex-col items-center justify-center">
+        <Button>
+          <Link href={"/admin/emmaus"}>Espace Emmaeüs</Link>
+        </Button>
+      </div>
     </>
   );
 }

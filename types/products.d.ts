@@ -1,8 +1,8 @@
 export interface PgProduct {
   id: string;
   digest_id?: string;
-  product_name: string;
-  product_description: string;
+  name: string;
+  description: string;
   collect_point: string;
   collect_point_name: string;
   collect_point_description: string;
