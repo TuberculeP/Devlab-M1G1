@@ -27,7 +27,7 @@ const ExportDialog = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Ajoute ici la logique d'envoi des données (API, stockage, etc.)
+    // Ajoute ici la logique d&apos;envoi des données (API, stockage, etc.)
   };
 
   return (

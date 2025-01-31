@@ -101,7 +101,7 @@ const ProductTable = () => {
           <TableHead className="w-10 text-center">✔</TableHead>
           <TableHead>Statut</TableHead>
           <TableHead>Nom du Matériel</TableHead>
-          <TableHead>Informations de l'Utilisateur</TableHead>
+          <TableHead>Informations de l&apos;utilisateur</TableHead>
           <TableHead>Certificat</TableHead>
         </TableRow>
       </TableHeader>
