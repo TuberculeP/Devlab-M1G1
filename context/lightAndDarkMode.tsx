@@ -17,6 +17,10 @@ export const Context = ({ children }: LightAndDarkModeType) => {
     const [isDark, setIsDark] = useState<boolean>(false);
 
     useEffect(() => {
+        document.documentElement.classList.toggle("dark-mode", isDark);
+      }, [isDark]);
+
+    useEffect(() => {
         const isDarkStorage = localStorage.getItem("isDark");
         if (isDarkStorage !== null) {
             setIsDark(isDarkStorage === "true");
