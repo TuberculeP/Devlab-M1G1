@@ -42,7 +42,7 @@ export const Header = () => {
             </div>
             <div className={isDark ? "header-container-dark" : "header-container"}>
                 <Link href={"/"} className="logo-link">
-                    <div className="header-logo" />
+                    <div className={isDark ? "header-logo-dark" : "header-logo"} />
                 </Link>
                 <div className="links-container">
                     <Link href={"/purchase"} className="header-link">

@@ -1,4 +1,4 @@
-.header-logo, .cross-burger-menu, .dark-cross-burger-menu,
+.header-logo, .header-logo-dark, .cross-burger-menu, .dark-cross-burger-menu,
 .burger-menu-btn, .dark-burger-menu-btn  {
     background-position: center;
     background-repeat: no-repeat;
@@ -34,16 +34,23 @@
     background-color: #2a2d30;
 }
 
-.header-logo {
+.header-logo, .header-logo-dark {
     width: 243px;
     height: 48px;
-    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
 }
 
-.header-logo:hover {
+.header-logo {
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
+}
+
+.header-logo-dark {
+    background-image: url('https://www.hauts-de-seine.fr/typo3conf/ext/e_magineurs/PortailCD92/Resources/Public/Images/logo-hauts-de-seine-300x59.png');
+}
+
+.header-logo:hover, .header-logo-dark:hover {
     opacity: 0.9;
     transition: all ease 0.2s;
 }

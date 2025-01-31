@@ -20,10 +20,9 @@
 }
 
 
-.footer-logo {
+.footer-logo, .footer-logo-dark {
     width: 243px;
     height: 48px;
-    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -33,7 +32,15 @@
     margin: auto;
 }
 
-.footer-logo:hover {
+.footer-logo {
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
+}
+
+.footer-logo-dark {
+    background-image: url('https://www.hauts-de-seine.fr/typo3conf/ext/e_magineurs/PortailCD92/Resources/Public/Images/logo-hauts-de-seine-300x59.png');
+}
+
+.footer-logo:hover, .footer-logo-dark:hover {
     opacity: 0.9;
     transition: all ease 0.2s;
 }
