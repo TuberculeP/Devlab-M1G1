@@ -8,15 +8,21 @@ import router from "./routes";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
+// DEVONLY - Utile pour la partie scannette en local
+import https from "https";
+import fs from "fs";
 
 // Load environment variables
 const dev = process.env.NODE_ENV !== "production";
+
 dotenv.config({
   path: [
     path.resolve(__dirname, `${dev ? "../" : ""}../.env.local`),
     path.resolve(__dirname, `${dev ? "../" : ""}../.env`),
   ],
 });
+
+const isHttps = process.env.IS_HTTPS === "true";
 
 // Init all configs
 pgConnect();
@@ -67,7 +73,18 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(3000, () => {
-    console.log("> Ready on http://localhost:3000");
-  });
+  if (!isHttps) {
+    server.listen(3000, () => {
+      console.log("> Ready on http://localhost:3000");
+    });
+  } else {
+    const sslOptions = {
+      key: fs.readFileSync("localhost.key"),
+      cert: fs.readFileSync("localhost.crt"),
+    };
+    // Lancer le serveur HTTPS
+    https.createServer(sslOptions, server).listen(3000, () => {
+      console.log("HTTPS Server running at https://localhost:3000");
+    });
+  }
 });

@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <div className="w-full min-h-[100vh] p-8">
-        <header className="flex items-center justify-between gap-4">
+        <header className="flex items-center justify-between gap-4 border-b-2  mb-4 pb-2">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-3xl">
             Administration
           </h1>
