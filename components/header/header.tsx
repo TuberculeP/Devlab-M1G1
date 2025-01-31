@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   const [headerEnabled, setHeaderEnabled] = useState<boolean>(false);
@@ -19,23 +20,42 @@ export const Header = () => {
             onClick={() => setHeaderEnabled(!headerEnabled)}
           />
           <div className="links-container-burger-menu">
-            <Link href={"/purchase"} className="burger-menu-link">
-              Points d&apos;achat
+            <Link
+              href={"/purchase"}
+              onClick={() => setHeaderEnabled(!headerEnabled)}
+            >
+              <Button className="burger-menu-link" variant="link">
+                Points d&apos;achat
+              </Button>
             </Link>
-            <Link href={"/collect"} className="burger-menu-link">
-              Points de Collecte
+            <Link
+              href={"/collect"}
+              onClick={() => setHeaderEnabled(!headerEnabled)}
+            >
+              <Button className="burger-menu-link" variant="link">
+                Points de Collecte
+              </Button>
             </Link>
-            <Link href={"/repairer"} className="header-link">
-              Trouver un réparateur
+            <Link
+              href={"/repairer"}
+              onClick={() => setHeaderEnabled(!headerEnabled)}
+            >
+              <Button className="burger-menu-link" variant="link">
+                Trouver un réparateur
+              </Button>
             </Link>
-            <Link href={"/product-list"} className="header-link">
-              Consulter les produits
+            <Link href={"#"} onClick={() => setHeaderEnabled(!headerEnabled)}>
+              <Button className="burger-menu-link" variant="link">
+                Assistance numérique
+              </Button>
             </Link>
-            <Link href={"#"} className="burger-menu-link">
-              Assistance numérique
-            </Link>
-            <Link href={"/faq"} className="burger-menu-link">
-              FAQ
+            <Link
+              href={"/faq"}
+              onClick={() => setHeaderEnabled(!headerEnabled)}
+            >
+              <Button className="burger-menu-link" variant="link">
+                FAQ
+              </Button>
             </Link>
           </div>
         </div>
@@ -46,22 +66,19 @@ export const Header = () => {
         </Link>
         <div className="links-container">
           <Link href={"/purchase"} className="header-link">
-            Points d&apos;achat
+            <Button variant="link">Points d&apos;achat</Button>
           </Link>
           <Link href={"/collect"} className="header-link">
-            Points de Collecte
+            <Button variant="link">Points de Collecte</Button>
           </Link>
           <Link href={"/repairer"} className="header-link">
-            Trouver un réparateur
-          </Link>
-          <Link href={"/product-list"} className="header-link">
-            Consulter les produits
+            <Button variant="link">Trouver un réparateur</Button>
           </Link>
           <Link href={"#"} className="header-link">
-            Assistance numérique
+            <Button variant="link">Assistance numérique</Button>
           </Link>
           <Link href={"/faq"} className="header-link">
-            FAQ
+            <Button variant="link">FAQ</Button>
           </Link>
           <div
             className="burger-menu-btn"

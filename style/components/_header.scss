@@ -2,6 +2,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
 }
 
 
@@ -14,12 +15,13 @@
     position: fixed;
     width: 100%;
     background-color: #FFF;
+    z-index: 2;
 }
 
 .header-logo {
-    width: 300px;
-    height: 80px;
-    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logo-cd92-novembre-bleu.png');
+    width: 243px;
+    height: 48px;
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
@@ -38,21 +40,16 @@
 .header-link {
     height: fit-content;
     margin: auto;
-    padding: 8px 28px;
-    border: 0.2px solid #09090b2c;
-    border-radius: 8px;
     transition: all ease 0.2s;
     font-size: 14px;
 }
 
-.header-link:hover {
-    border: 0.2px solid #09090b00;
-    background-color: #09090b2c;
-    transition: all ease 0.2s;
-}
-
 .burger-menu-enabled, .burger-menu-disabled {
     display: none;
+}
+
+.burger-menu-container {
+    z-index: 4;
 }
 
 @media (max-width: 1024px) {
@@ -63,10 +60,6 @@
 
     .header-link {
         display: none;
-    }
-
-    .header-logo {
-        margin-right: auto;
     }
 
     .burger-menu-enabled, .burger-menu-disabled {
@@ -83,6 +76,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        z-index: 4;
     }
 
     .burger-menu-enabled {
@@ -121,13 +115,11 @@
     .burger-menu-link {
         display: block;
         height: fit-content;
-        padding: 16px 28px;
-        border: 0.2px solid #09090b2c;
-        border-radius: 8px;
         transition: all ease 0.2s;
-        font-size: 14px;
+        font-size: 16px;
         width: 50%;
         margin-left: 8px;
+        text-align: start;
     }
 
 }
@@ -144,10 +136,6 @@
     .burger-menu-link {
         margin: auto;
         width: 70%;
-    }
-
-    .header-logo {
-        width: 200px;
-        height: 53px;
+        font-size: 18px;
     }
 }
