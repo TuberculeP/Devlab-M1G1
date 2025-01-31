@@ -7,3 +7,17 @@
 
 // Views
 @import "./views/layout";
+
+.dark-body {
+    background-color: #1A1C1E;
+    transition: all ease 0.2s;
+}
+
+.clear-body {
+    background-color: white;
+    transition: all ease 0.2s;
+}
+
+.dark-body > p {
+    color: white;
+}

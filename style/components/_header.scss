@@ -1,40 +1,66 @@
-.header-logo, .cross-burger-menu, .burger-menu-btn {
+.header-logo, .header-logo-dark, .cross-burger-menu, .dark-cross-burger-menu,
+.burger-menu-btn, .dark-burger-menu-btn  {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
 }
 
+.logo-link {
+    width: fit-content;
+}
 
-.header-container {
+#dark-laptop-btn {
+    margin: auto;
+}
+
+.header-container, .header-container-dark {
     height: fit-content;
     padding: 8px 28px;
     border-bottom: 0.2px solid #09090b2c;
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
     position: fixed;
     width: 100%;
-    background-color: #FFF;
+    transition: all ease 0.2s;
     z-index: 2;
 }
 
-.header-logo {
+.header-container {
+    background-color: #FFF;
+}
+
+.header-container-dark {
+    background-color: #2a2d30;
+}
+
+.header-logo, .header-logo-dark {
     width: 243px;
     height: 48px;
-    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
     border-radius: 8px;
     cursor: pointer;
     transition: all ease 0.2s;
 }
 
-.header-logo:hover {
+.header-logo {
+    background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
+}
+
+.header-logo-dark {
+    background-image: url('https://www.hauts-de-seine.fr/typo3conf/ext/e_magineurs/PortailCD92/Resources/Public/Images/logo-hauts-de-seine-300x59.png');
+}
+
+.header-logo:hover, .header-logo-dark:hover {
     opacity: 0.9;
     transition: all ease 0.2s;
 }
 
 .links-container {
     display: flex;
-    gap: 16px;
+}
+
+.links-container > * {
+    min-width: 30px;
 }
 
 .header-link {
@@ -48,17 +74,13 @@
     display: none;
 }
 
-.burger-menu-container {
-    z-index: 4;
-}
-
 @media (max-width: 1024px) {
 
-    .header-container {
-        padding: 8px 16px;
+    .header-link {
+        display: none;
     }
 
-    .header-link {
+    #dark-laptop-btn {
         display: none;
     }
 
@@ -72,7 +94,11 @@
         transition: all ease-in-out 0.3s;
     }
 
-    .burger-menu-container {
+    .burger-menu-container-dark {
+        background-color: #2a2d30;
+    }
+
+    .burger-menu-container-dark {
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -87,21 +113,35 @@
         transform: translateX(100%)
     }
 
-    .cross-burger-menu {
-        background-image: url('../../public/cross.svg');
+    .cross-burger-menu, .dark-cross-burger-menu {
         width: 42px;
         height: 42px;
     }
 
-    .burger-menu-btn {
+    .cross-burger-menu {
+        background-image: url('../../public/cross.svg');
+    }
+
+    .dark-cross-burger-menu {
+        background-image: url('../../public/white-cross.svg');
+    }
+
+    .burger-menu-btn, .dark-burger-menu-btn {
         display: block;
-        background-image: url('../../public/burger-menu.svg');
         width: 42px;
         height: 42px;
         margin-left: auto;
         cursor: pointer;
         margin-top: auto;
         margin-bottom: auto;
+    }
+
+    .burger-menu-btn {
+        background-image: url('../../public/burger-menu.svg');
+    }
+
+    .dark-burger-menu-btn {
+        background-image: url('../../public/white-burger-menu.svg');
     }
 
     .links-container-burger-menu {
