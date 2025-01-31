@@ -13,8 +13,8 @@ export const Header = () => {
     return (
         <>
             <div className={headerEnabled ? "burger-menu-enabled" : "burger-menu-disabled"}>
-                <div className="burger-menu-container">
-                    <div className="cross-burger-menu" onClick={() => setHeaderEnabled(!headerEnabled)} />
+                <div className={isDark ? "burger-menu-container-dark" : "burger-menu-container"}>
+                    <div className={isDark ? "dark-cross-burger-menu" : "cross-burger-menu"} onClick={() => setHeaderEnabled(!headerEnabled)} />
                     <div className="links-container-burger-menu">
                         <Link href={"/purchase"} onClick={() => setHeaderEnabled(!headerEnabled)}>
                             <Button className={isDark ? "burger-menu-link white" : "burger-menu-link"} variant="link">Points d&apos;achat
@@ -41,7 +41,7 @@ export const Header = () => {
                 </div>
             </div>
             <div className={isDark ? "header-container-dark" : "header-container"}>
-                <Link href={"/"}>
+                <Link href={"/"} className="logo-link">
                     <div className="header-logo" />
                 </Link>
                 <div className="links-container">
@@ -63,8 +63,10 @@ export const Header = () => {
                         <Button className={isDark ? "white" : ""} variant="link">FAQ
                         </Button>
                     </Link>
-                    <DarkAndLightBtn />
-                    <div className="burger-menu-btn" onClick={() => setHeaderEnabled(!headerEnabled)} />
+                    <div id="dark-laptop-btn">
+                        <DarkAndLightBtn />
+                    </div>
+                    <div className={isDark ? "dark-burger-menu-btn" : "burger-menu-btn"} onClick={() => setHeaderEnabled(!headerEnabled)} />
                 </div>
             </div>
 

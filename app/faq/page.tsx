@@ -11,10 +11,14 @@ import {
 } from "@/components/ui/accordion";
 import useUserHook from "@/hooks/userHook";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 
 export default function Faq() {
   const { loading, fetchUserData } = useUserHook();
+
+  const { isDark } = useContext(LightAndDarkModeContext)!;
+
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -26,7 +30,7 @@ export default function Faq() {
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="min-h-screen p-8 pb-20 gap-3 sm:p-20 font-[family-name:var(--font-geist-sans)] flex flex-col">
+        <div className={`${isDark ? "text-white" : ""} min-h-screen p-8 pb-20 gap-3 sm:p-20 font-[family-name:var(--font-geist-sans)] flex flex-col`}>
           <h1 className="text-2xl font-bold my-6">Foire Aux Questions (FAQ)</h1>
           <div>
             Vous avez des questions ? Nous avons les réponses ! Cette section
