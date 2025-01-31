@@ -27,7 +27,7 @@ export const Header = () => {
                             <Button className="burger-menu-link" variant="link">Trouver un réparateur
                             </Button>
                         </Link>
-                        <Link href={"#"} onClick={() => setHeaderEnabled(!headerEnabled)}>
+                        <Link href={"/device-repair"} onClick={() => setHeaderEnabled(!headerEnabled)}>
                             <Button className="burger-menu-link" variant="link">Assistance numérique
                             </Button>
                         </Link>
@@ -56,6 +56,9 @@ export const Header = () => {
                     <Link href={"#"} className="header-link">
                         <Button variant="link">Assistance numérique
                         </Button>
+                    </Link>
+                    <Link href={"/device-repair"} className="header-link">
+                        <Button variant="link">Assistant Réparation</Button>
                     </Link>
                     <Link href={"/faq"} className="header-link">
                         <Button variant="link">FAQ
