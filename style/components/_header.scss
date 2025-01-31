@@ -14,13 +14,11 @@
     position: fixed;
     width: 100%;
     background-color: #FFF;
-    z-index: 3;
 }
 
 .header-logo {
-    width: 404px;
-    height: 80px;
-    scale: 0.8;
+    width: 243px;
+    height: 48px;
     background-image: url('https://www.hauts-de-seine.fr/fileadmin/user_upload/Logo/logoHautsDeSeine2022.png');
     border-radius: 8px;
     cursor: pointer;
@@ -57,6 +55,10 @@
     display: none;
 }
 
+.burger-menu-container {
+    z-index: 4;
+}
+
 @media (max-width: 1024px) {
 
     .header-container {
@@ -65,10 +67,6 @@
 
     .header-link {
         display: none;
-    }
-
-    .header-logo {
-        margin-right: auto;
     }
 
     .burger-menu-enabled, .burger-menu-disabled {
@@ -85,6 +83,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        z-index: 4;
     }
 
     .burger-menu-enabled {
@@ -146,10 +145,5 @@
     .burger-menu-link {
         margin: auto;
         width: 70%;
-    }
-
-    .header-logo {
-        width: 200px;
-        height: 53px;
     }
 }
