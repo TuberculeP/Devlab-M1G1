@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function FollowPage() {
   const [code, setCode] = useState("");
@@ -13,16 +15,26 @@ export default function FollowPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 pt-24 pb-10">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="code">Enter Code:</label>
-        <input
+    <div className="container mx-auto px-4 pt-24 pb-10 w-fit">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center justify-center"
+      >
+        <label
+          htmlFor="code"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Enter Code:
+        </label>
+        <Input
           type="text"
           id="code"
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit" className="mt-4">
+          Submit
+        </Button>
       </form>
     </div>
   );

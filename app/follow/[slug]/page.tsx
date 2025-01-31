@@ -5,8 +5,7 @@ import { PgProduct } from "@/types/products";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import QRCode from "react-qr-code";
-import Image from "next/image";
-import { formatStatus, getStatusColor } from "@/lib/utils";
+import { formatStatus } from "@/lib/utils";
 
 export default function FollowProduct({
   params: { slug },
@@ -73,9 +72,13 @@ export default function FollowProduct({
                       {product.product_name}
                     </h1>
                     <div
-                      className={`px-2 py-1 rounded-full w-fit text-xs ${getStatusColor(
-                        product.status
-                      )}`}
+                      className={`px-2 py-1 rounded-full w-fit text-xs ${
+                        product.status === "recycled"
+                          ? "bg-green-200"
+                          : product.status === "collected"
+                          ? "bg-sky-200"
+                          : "bg-slate-200"
+                      }`}
                     >
                       {formatStatus(product.status)}
                     </div>

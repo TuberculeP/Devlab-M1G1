@@ -16,14 +16,3 @@ export function formatStatus(status: PgProduct["status"]) {
       return "Recyclé par Emaeus";
   }
 }
-
-export function getStatusColor(status: PgProduct["status"]) {
-  switch (status) {
-    case "recovered":
-      return "bg-slate-200";
-    case "collected":
-      return "bg-sky-200";
-    case "recycled":
-      return "bg-green-200";
-  }
-}

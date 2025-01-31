@@ -14,13 +14,15 @@ import fs from "fs";
 
 // Load environment variables
 const dev = process.env.NODE_ENV !== "production";
-const isHttps = process.env.IS_HTTPS === "true";
+
 dotenv.config({
   path: [
     path.resolve(__dirname, `${dev ? "../" : ""}../.env.local`),
     path.resolve(__dirname, `${dev ? "../" : ""}../.env`),
   ],
 });
+
+const isHttps = process.env.IS_HTTPS === "true";
 
 // Init all configs
 pgConnect();
