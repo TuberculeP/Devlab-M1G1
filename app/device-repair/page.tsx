@@ -59,12 +59,12 @@ export default function DeviceRepair() {
     <div className="container mx-auto py-8 px-4 max-w-4xl mt-12">
       <Card className="mb-8 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">Diagnostic et Réparation d'Appareils</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Diagnostic et Réparation d&apos;Appareils</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="category">Catégorie d'appareil</Label>
+              <Label htmlFor="category">Catégorie d&apos;appareil</Label>
               <Select
                 value={selectedCategory}
                 onValueChange={(value) => {
@@ -86,7 +86,7 @@ export default function DeviceRepair() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="deviceType">Type d'appareil</Label>
+              <Label htmlFor="deviceType">Type d&apos;appareil</Label>
               <Select
                 value={deviceType}
                 onValueChange={setDeviceType}
