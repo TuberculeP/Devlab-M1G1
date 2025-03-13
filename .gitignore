@@ -43,3 +43,8 @@ next-env.d.ts
 
 # IDE
 .idea
+
+# Certs
+*.pem
+*.crt
+*.key

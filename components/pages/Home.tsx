@@ -13,7 +13,7 @@ export const HomePage = () => {
             <div className="home-page-hero h-dvh w-full flex flex-col items-center justify-center bg-gray-100">
                 <div className='filter-home-hero'>
                     <div className='container-title-home-hero'>
-                        <h1 className="text-4xl mb-4 font-bold">Le reconditionnement c&apos;est bien</h1>
+                        <h1 className="text-4xl mb-4 font-bold">Donnez une seconde vie à vos équipements électroniques</h1>
                         <a href='#en-savoir-plus'><Button className="mt-4">En savoir plus</Button></a>
                     </div>
                 </div>
