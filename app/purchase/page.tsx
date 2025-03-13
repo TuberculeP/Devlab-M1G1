@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
 import type { PurchasePoint } from "@/types/purchasePoint";
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 
 //TODO move this to backend 
 const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
@@ -143,7 +144,6 @@ const mockPurchasePoints = [
     "phoneNumber": "Non disponible"
   }
 ]
-//
 
 export default function PurchasePoint() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -166,6 +166,8 @@ export default function PurchasePoint() {
   };
 
   const handleCardClick = (purchase: PurchasePoint) => setSelectedPurchase(purchase);
+
+  const { isDark } = useContext(LightAndDarkModeContext)!;
   
 
   const getMapUrl = () => {
@@ -189,18 +191,19 @@ export default function PurchasePoint() {
   
   return (
     <div className="container mx-auto px-4 pt-24 pb-10">
-      <h1 className="text-2xl font-bold mb-6 ">Points d&apos;achat</h1>
+      <h1 className={`${isDark ? "text-white" : ""} text-2xl font-bold mb-6 `}>Points d&apos;achat</h1>
       <div className="flex gap-4 items-center mb-6">
-        <Input 
+        <Input
           placeholder="Rechercher un point d'achat..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          className={`${isDark ? "text-white" : ""}`}
         />
         <Select
           value={selectedCity}
           onValueChange={handleCityChange}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className={`${isDark ? "text-white" : ""} w-[180px]`}>
             <SelectValue placeholder="Ville" />
           </SelectTrigger>
           <SelectContent>

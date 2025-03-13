@@ -2,6 +2,7 @@ import { Router } from "express";
 import { getAllFooBars } from "../domains/fooBar/fooBar.service";
 import { authRouter } from "./auth";
 import { adminRouter } from "./admin";
+import { productsRouter } from "./products";
 
 const router = Router();
 
@@ -11,8 +12,8 @@ router.get("/api/foo-bar", async (req, res) => {
   res.json(results);
 });
 
-// auth routes
 router.use("/auth", authRouter);
 router.use("/admin", adminRouter);
+router.use("/products", productsRouter);
 
 export default router;

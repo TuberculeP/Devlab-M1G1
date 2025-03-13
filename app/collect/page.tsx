@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -10,6 +10,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 
 
 //TODO move this to backend 
@@ -312,6 +313,8 @@ export default function CollectPoint() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCity, setSelectedCity] = useState("all");
 
+  const { isDark } = useContext(LightAndDarkModeContext)!;
+
   const filteredPoints = mockCollectPoints.filter(point => {
     const matchesSearch = 
       point.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -343,18 +346,19 @@ export default function CollectPoint() {
 
   return (
     <div className="container mx-auto px-4 pt-24 pb-10">
-      <h1 className="text-2xl font-bold mb-6 ">Points de Collecte</h1>
+      <h1 className={`${isDark ? "text-white" : ""} text-2xl font-bold mb-6 `}>Points de Collecte</h1>
       <div className="flex gap-4 items-center mb-6">
         <Input 
           placeholder="Rechercher un point de collecte..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          className={isDark ? "text-white" : ""}
         />
         <Select
           value={selectedCity}
           onValueChange={handleCityChange}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className={`${isDark ? "text-white" : ""} w-[180px]`}>
             <SelectValue placeholder="Ville" />
           </SelectTrigger>
           <SelectContent>

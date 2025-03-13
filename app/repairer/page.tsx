@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
 import type { Repairer } from "@/types/repairer";
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 
 //TODO move this to backend 
 const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
@@ -146,6 +147,8 @@ export default function FindARepairer() {
     const [selectedDevice, setSelectedDevice] = useState("all");
     const [selectedRepairer, setSelectedRepairer] = useState({} as Repairer);
     const [nearestRepairer] = useState({} as Repairer);
+
+    const { isDark } = useContext(LightAndDarkModeContext)!;
   
     const filteredRepairer = repairer.filter((repairer) => {
       if (selectedCity !== "all" && !repairer.address.includes(selectedCity)) {
@@ -177,16 +180,16 @@ export default function FindARepairer() {
 
     return (
       <div className="container mx-auto px-4 pt-24 pb-10 flex flex-col gap-6">
-        <h1 className="text-2xl font-bold mb-6">Trouver un réparateur</h1>
+        <h1 className={`${isDark ? "text-white" : ""} text-2xl font-bold mb-6 `}>Trouver un réparateur</h1>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
           <Input
             placeholder="Rechercher un réparateur"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-1/2"
+            className={`${isDark ? "text-white" : ""} w-1/2`}
           />
           <Select value={selectedCity} onValueChange={handleCityChange}>
-            <SelectTrigger>
+            <SelectTrigger className={isDark ? "text-white" : ""}>
               <SelectValue>{selectedCity === "all" ? "Toutes les villes" : selectedCity}</SelectValue>
             </SelectTrigger>
             <SelectContent>
@@ -199,7 +202,7 @@ export default function FindARepairer() {
             </SelectContent>
           </Select>
           <Select value={selectedDevice} onValueChange={handleDeviceChange}>
-            <SelectTrigger>
+            <SelectTrigger className={isDark ? "text-white" : ""}>
               <SelectValue>
                 {selectedDevice === "all" ? "Tous les appareils" : selectedDevice}
               </SelectValue>
