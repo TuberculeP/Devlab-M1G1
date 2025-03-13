@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import '@/style/components/pages/Follow.scss';
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 
 export default function FollowPage() {
   const [code, setCode] = useState("");
@@ -14,8 +16,11 @@ export default function FollowPage() {
     router.push(`follow/${code}`);
   };
 
+  const { isDark } = useContext(LightAndDarkModeContext)!;
+
   return (
-    <div className="container mx-auto px-4 pt-24 pb-10 w-fit">
+    <div className={isDark ? "follow-container-dark container mx-auto px-4 pt-24 pb-10 w-fit"
+      : "follow-container container mx-auto px-4 pt-24 pb-10 w-fit"}>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center"
