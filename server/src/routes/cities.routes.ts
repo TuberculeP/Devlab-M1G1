@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router, RequestHandler } from "express";
 import citiesService from "../domains/cities/cities.service";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+const getAllCities: RequestHandler = async (req, res) => {
   try {
     const cities = await citiesService.getAllCities();
     res.json(cities);
@@ -11,18 +11,20 @@ router.get("/", async (req, res) => {
     console.error("Error fetching cities:", error);
     res.status(500).json({ error: "Failed to fetch cities" });
   }
-});
+};
 
-router.get("/:id", async (req, res) => {
+const getCityById: RequestHandler = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     if (isNaN(id)) {
-      return res.status(400).json({ error: "Invalid city ID" });
+      res.status(400).json({ error: "Invalid city ID" });
+      return;
     }
 
     const city = await citiesService.getCityById(id);
     if (!city) {
-      return res.status(404).json({ error: "City not found" });
+      res.status(404).json({ error: "City not found" });
+      return;
     }
 
     res.json(city);
@@ -30,14 +32,15 @@ router.get("/:id", async (req, res) => {
     console.error("Error fetching city:", error);
     res.status(500).json({ error: "Failed to fetch city" });
   }
-});
+};
 
-router.post("/", async (req, res) => {
+const createCity: RequestHandler = async (req, res) => {
   try {
     const { name, coordinates } = req.body;
 
     if (!name || !coordinates) {
-      return res.status(400).json({ error: "Name and coordinates are required" });
+      res.status(400).json({ error: "Name and coordinates are required" });
+      return;
     }
 
     const city = await citiesService.createCity({ name, coordinates });
@@ -46,23 +49,26 @@ router.post("/", async (req, res) => {
     console.error("Error creating city:", error);
     res.status(500).json({ error: "Failed to create city" });
   }
-});
+};
 
-router.put("/:id", async (req, res) => {
+const updateCity: RequestHandler = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     if (isNaN(id)) {
-      return res.status(400).json({ error: "Invalid city ID" });
+      res.status(400).json({ error: "Invalid city ID" });
+      return;
     }
 
     const updates = req.body;
     if (Object.keys(updates).length === 0) {
-      return res.status(400).json({ error: "No update data provided" });
+      res.status(400).json({ error: "No update data provided" });
+      return;
     }
 
     const city = await citiesService.updateCity(id, updates);
     if (!city) {
-      return res.status(404).json({ error: "City not found" });
+      res.status(404).json({ error: "City not found" });
+      return;
     }
 
     res.json(city);
@@ -70,18 +76,20 @@ router.put("/:id", async (req, res) => {
     console.error("Error updating city:", error);
     res.status(500).json({ error: "Failed to update city" });
   }
-});
+};
 
-router.delete("/:id", async (req, res) => {
+const deleteCity: RequestHandler = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     if (isNaN(id)) {
-      return res.status(400).json({ error: "Invalid city ID" });
+      res.status(400).json({ error: "Invalid city ID" });
+      return;
     }
 
     const success = await citiesService.deleteCity(id);
     if (!success) {
-      return res.status(404).json({ error: "City not found" });
+      res.status(404).json({ error: "City not found" });
+      return;
     }
 
     res.status(204).send();
@@ -89,6 +97,12 @@ router.delete("/:id", async (req, res) => {
     console.error("Error deleting city:", error);
     res.status(500).json({ error: "Failed to delete city" });
   }
-});
+};
+
+router.get("/", getAllCities);
+router.get("/:id", getCityById);
+router.post("/", createCity);
+router.put("/:id", updateCity);
+router.delete("/:id", deleteCity);
 
 export default router;
