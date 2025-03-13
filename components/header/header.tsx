@@ -66,13 +66,11 @@ export const Header = () => {
                 Trouver un réparateur
               </Button>
             </Link>
-            <Link href={"#"} onClick={() => setHeaderEnabled(!headerEnabled)}>
-              <Button
-                className={
-                  isDark ? "burger-menu-link white" : "burger-menu-link"
-                }
-                variant="link"
-              >
+            <Link
+              href={"/device-repair"}
+              onClick={() => setHeaderEnabled(!headerEnabled)}
+            >
+              <Button className="burger-menu-link" variant="link">
                 Assistance numérique
               </Button>
             </Link>
@@ -117,6 +115,9 @@ export const Header = () => {
             <Button className={isDark ? "white" : ""} variant="link">
               Assistance numérique
             </Button>
+          </Link>
+          <Link href={"/device-repair"} className="header-link">
+            <Button variant="link">Assistant Réparation</Button>
           </Link>
           <Link href={"/faq"} className="header-link">
             <Button className={isDark ? "white" : ""} variant="link">
