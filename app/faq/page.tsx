@@ -31,6 +31,13 @@ export default function Faq() {
         </div>
       ) : (
         <div className={`${isDark ? "text-white" : ""} min-h-screen p-8 pb-20 gap-3 sm:p-20 font-[family-name:var(--font-geist-sans)] flex flex-col`}>
+          <h1 className="text-2xl font-bold my-6">Articles</h1>
+          <Link href={"/faq/reconditionnement"}>
+            <div className="article-card">
+              <div className="article-picture"></div>
+              <p className="article-title">Comment préparer son ordinateur au reconditionnement</p>
+            </div>
+          </Link>
           <h1 className="text-2xl font-bold my-6">Foire Aux Questions (FAQ)</h1>
           <div>
             Vous avez des questions ? Nous avons les réponses ! Cette section
@@ -47,8 +54,8 @@ export default function Faq() {
                 Qu&apos;est-ce que le reconditionnement d&apos;ordinateurs ?
               </AccordionTrigger>
               <AccordionContent>
-              Le reconditionnement d&apos;ordinateurs est un processus par lequel des ordinateurs usagés,
-              défectueux ou obsolètes sont réparés, remis à niveau, et testés pour leur donner une seconde vie.
+                Le reconditionnement d&apos;ordinateurs est un processus par lequel des ordinateurs usagés,
+                défectueux ou obsolètes sont réparés, remis à niveau, et testés pour leur donner une seconde vie.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -115,15 +122,15 @@ export default function Faq() {
                 reconditionnement ?
               </AccordionTrigger>
               <AccordionContent>
-              Les étapes du processus de collecte et de reconditionnement sont :
-              <ul className="faq-list">
-              <li>- Collecte : Récupération des ordinateurs dans un point de collecte.</li>
-              <li>- Évaluation : Inspection pour déterminer leur état et réparabilité par Emaus Connect.</li>
-              <li>- Réparation : Remplacement ou réparation des composants défectueux.</li>
-              <li>- Mise à jour : Installation de nouveaux composants et logiciels.</li>
-              <li>- Tests : Vérification des performances et fiabilité.</li>
-              <li>- Revente ou don : Les appareils remis à neuf sont proposés avec garantie.</li>
-              </ul>
+                Les étapes du processus de collecte et de reconditionnement sont :
+                <ul className="faq-list">
+                  <li>- Collecte : Récupération des ordinateurs dans un point de collecte.</li>
+                  <li>- Évaluation : Inspection pour déterminer leur état et réparabilité par Emaus Connect.</li>
+                  <li>- Réparation : Remplacement ou réparation des composants défectueux.</li>
+                  <li>- Mise à jour : Installation de nouveaux composants et logiciels.</li>
+                  <li>- Tests : Vérification des performances et fiabilité.</li>
+                  <li>- Revente ou don : Les appareils remis à neuf sont proposés avec garantie.</li>
+                </ul>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
