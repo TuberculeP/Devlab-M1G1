@@ -8,5 +8,6 @@ export interface CollectPoint {
   phone_number: string;
   city_id: number;
   type: CollectPointType;
-  city: string; 
+  city: string;
+  supported_devices?: string[];
 }

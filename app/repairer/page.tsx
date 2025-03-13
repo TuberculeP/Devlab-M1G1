@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -10,8 +10,9 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
-import apiClient from "@/lib/apiClient";
 import { CollectPoint } from "@/types/collect-points";
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
+import apiClient from "@/lib/apiClient";
 
 const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
@@ -26,9 +27,20 @@ interface CollectPointsResponse {
   total: number;
 }
 
+// List of devices for the filter
+const devices = [
+  "Smartphone",
+  "Tablette",
+  "Ordinateur portable",
+  "Ordinateur de bureau",
+  "Télévision",
+  "Électroménager"
+];
+
 export default function RepairerPoints() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCity, setSelectedCity] = useState("all");
+  const [selectedDevice, setSelectedDevice] = useState("all");
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,6 +48,7 @@ export default function RepairerPoints() {
   const [repairers, setRepairers] = useState<CollectPointsResponse | null>(null);
   const [selectedPoint, setSelectedPoint] = useState<CollectPoint | null>(null);
   const limit = 20;
+  const { isDark } = useContext(LightAndDarkModeContext)!;
 
   const fetchCities = async () => {
     const [data, error] = await apiClient.getRequest<City[]>('/api/cities');
@@ -80,10 +93,19 @@ export default function RepairerPoints() {
   }, [selectedCity, page, cities]);
 
   const filteredPoints = repairers?.data.filter(point => {
+    // First filter by search term
     const matchesSearch = 
       point.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       point.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       point.address.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    // Then filter by device if selected
+    if (selectedDevice !== "all" && point.supported_devices) {
+      const deviceFound = point.supported_devices.some(device => 
+        device.toLowerCase().includes(selectedDevice.toLowerCase())
+      );
+      return matchesSearch && deviceFound;
+    }
     
     return matchesSearch;
   }) ?? [];
@@ -93,11 +115,15 @@ export default function RepairerPoints() {
     setPage(1); 
   };
 
+  const handleDeviceChange = (value: string) => {
+    setSelectedDevice(value);
+    setPage(1);
+  };
+
   const getMapUrl = () => {
     const baseUrl = "https://www.google.com/maps/embed/v1/";
     if (selectedPoint) {
-      return `${baseUrl}place?key=${api_key}&q=${encodeURIComponent(`${selectedPoint.name}, ${selectedPoint.address}, ${selectedPoint.city}`)}`;
-    }
+      return `${baseUrl}place?key=${api_key}&q=${encodeURIComponent(`${selectedPoint.name}, ${selectedPoint.address}, ${selectedPoint.city}`)}`;}
     if (selectedCity !== "all") {
       const city = cities.find(c => c.name === selectedCity);
       if (!city) {
@@ -120,18 +146,19 @@ export default function RepairerPoints() {
 
   return (
     <div className="container mx-auto px-4 pt-24 pb-10">
-      <h1 className="text-2xl font-bold mb-6 ">Réparateurs</h1>
-      <div className="flex gap-4 items-center mb-6">
+      <h1 className={`${isDark ? "text-white" : ""} text-2xl font-bold mb-6`}>Réparateurs</h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center mb-6">
         <Input 
           placeholder="Rechercher un réparateur..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          className={`${isDark ? "text-white" : ""}`}
         />
         <Select
           value={selectedCity}
           onValueChange={handleCityChange}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className={`w-[180px] ${isDark ? "text-white" : ""}`}>
             <SelectValue placeholder="Ville" />
           </SelectTrigger>
           <SelectContent>
@@ -139,6 +166,22 @@ export default function RepairerPoints() {
             {cities.map((city) => (
               <SelectItem key={city.id} value={city.name}>
                 {city.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select
+          value={selectedDevice}
+          onValueChange={handleDeviceChange}
+        >
+          <SelectTrigger className={`w-[180px] ${isDark ? "text-white" : ""}`}>
+            <SelectValue placeholder="Appareil" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">Tous les appareils</SelectItem>
+            {devices.map((device) => (
+              <SelectItem key={device} value={device}>
+                {device}
               </SelectItem>
             ))}
           </SelectContent>
@@ -166,7 +209,7 @@ export default function RepairerPoints() {
           {filteredPoints.map((point) => (
             <Card 
               key={point.id} 
-              className="hover:shadow-lg transition-shadow cursor-pointer"
+              className={`hover:shadow-lg transition-shadow cursor-pointer ${isDark ? "bg-gray-800 text-white" : ""}`}
               onClick={() => setSelectedPoint(point)}
             >
               <CardContent className="p-6">
@@ -174,7 +217,7 @@ export default function RepairerPoints() {
                   <div className="space-y-6">
                     <h2 className="text-xl font-semibold">{point.name}</h2>
                     
-                    <div className="space-y-2 text-gray-600">
+                    <div className={`space-y-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4" />
                         <span>{point.address}, {point.city}</span>
@@ -182,18 +225,29 @@ export default function RepairerPoints() {
       
                       <div className="flex items-center gap-2">
                         <Phone className="h-4 w-4" />
-                        <a href={`tel:${point.phone_number}`} className="hover:text-blue-600">
+                        <a href={`tel:${point.phone_number}`} className={`${isDark ? "hover:text-blue-400" : "hover:text-blue-600"}`}>
                           {point.phone_number}
                         </a>
                       </div>
                     </div>
+                    
+                    {point.supported_devices && point.supported_devices.length > 0 && (
+                      <div className="mt-2">
+                        <h3 className="text-sm font-medium mb-1">Appareils pris en charge:</h3>
+                        <ul className="list-disc list-inside text-sm">
+                          {point.supported_devices.map((device, idx) => (
+                            <li key={idx}>{device}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                   
                   <a 
                     href={point.url_location}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-600 hover:underline"
+                    className={`flex items-center gap-2 ${isDark ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:underline"}`}
                   >
                     <MapPin className="h-4 w-4" />
                     <span>Voir sur la carte</span>
@@ -204,7 +258,7 @@ export default function RepairerPoints() {
           ))}
 
           {filteredPoints.length === 0 && (
-            <p className="text-center text-gray-500 col-span-2">
+            <p className={`text-center ${isDark ? "text-gray-300" : "text-gray-500"} col-span-2`}>
               Aucun réparateur trouvé pour votre recherche.
             </p>
           )}
@@ -216,17 +270,17 @@ export default function RepairerPoints() {
           <button
             onClick={() => setPage(p => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="px-4 py-2 border rounded-lg disabled:opacity-50"
+            className={`px-4 py-2 border rounded-lg disabled:opacity-50 ${isDark ? "text-white border-gray-600" : ""}`}
           >
             Précédent
           </button>
-          <span className="px-4 py-2">
+          <span className={`px-4 py-2 ${isDark ? "text-white" : ""}`}>
             Page {page} sur {Math.ceil(repairers.total / limit)}
           </span>
           <button
             onClick={() => setPage(p => p + 1)}
             disabled={page >= Math.ceil(repairers.total / limit)}
-            className="px-4 py-2 border rounded-lg disabled:opacity-50"
+            className={`px-4 py-2 border rounded-lg disabled:opacity-50 ${isDark ? "text-white border-gray-600" : ""}`}
           >
             Suivant
           </button>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MapPin, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -12,6 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import apiClient from "@/lib/apiClient";
 import { CollectPoint } from "@/types/collect-points";
+import type { PurchasePoint } from "@/types/purchasePoint";
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 
 const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
@@ -93,6 +95,10 @@ export default function PurchasePoints() {
     setPage(1); 
   };
 
+
+  const { isDark } = useContext(LightAndDarkModeContext)!;
+  
+
   const getMapUrl = () => {
     const baseUrl = "https://www.google.com/maps/embed/v1/";
     if (selectedPoint) {
@@ -120,18 +126,19 @@ export default function PurchasePoints() {
 
   return (
     <div className="container mx-auto px-4 pt-24 pb-10">
-      <h1 className="text-2xl font-bold mb-6 ">Points de Vente</h1>
+      <h1 className={`${isDark ? "text-white" : ""} text-2xl font-bold mb-6 `}>Points d&apos;achat</h1>
       <div className="flex gap-4 items-center mb-6">
-        <Input 
-          placeholder="Rechercher un point de vente..."
+        <Input
+          placeholder="Rechercher un point d'achat..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          className={`${isDark ? "text-white" : ""}`}
         />
         <Select
           value={selectedCity}
           onValueChange={handleCityChange}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className={`${isDark ? "text-white" : ""} w-[180px]`}>
             <SelectValue placeholder="Ville" />
           </SelectTrigger>
           <SelectContent>
@@ -159,22 +166,22 @@ export default function PurchasePoints() {
 
       {isLoading ? (
         <div className="flex justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          <div className={`animate-spin rounded-full h-8 w-8 border-b-2 ${isDark ? "border-white" : "border-gray-900"}`}></div>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
           {filteredPoints.map((point) => (
             <Card 
               key={point.id} 
-              className="hover:shadow-lg transition-shadow cursor-pointer"
+              className={`hover:shadow-lg transition-shadow cursor-pointer ${isDark ? "bg-gray-800 text-white" : ""}`}
               onClick={() => setSelectedPoint(point)}
             >
               <CardContent className="p-6">
-                <div className="flex justify-between items-start">
+                <div className={`flex justify-between items-start ${isDark ? "text-gray-300" : "text-gray-600"}`}>
                   <div className="space-y-6">
                     <h2 className="text-xl font-semibold">{point.name}</h2>
                     
-                    <div className="space-y-2 text-gray-600">
+                    <div className={`space-y-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4" />
                         <span>{point.address}, {point.city}</span>
@@ -182,7 +189,7 @@ export default function PurchasePoints() {
       
                       <div className="flex items-center gap-2">
                         <Phone className="h-4 w-4" />
-                        <a href={`tel:${point.phone_number}`} className="hover:text-blue-600">
+                        <a href={`tel:${point.phone_number}`} className={`${isDark ? "hover:text-blue-400" : "hover:text-blue-600"}`}>
                           {point.phone_number}
                         </a>
                       </div>
@@ -193,7 +200,7 @@ export default function PurchasePoints() {
                     href={point.url_location}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-600 hover:underline"
+                    className={`flex items-center gap-2 ${isDark ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:underline"}`}
                   >
                     <MapPin className="h-4 w-4" />
                     <span>Voir sur la carte</span>
@@ -204,7 +211,7 @@ export default function PurchasePoints() {
           ))}
 
           {filteredPoints.length === 0 && (
-            <p className="text-center text-gray-500 col-span-2">
+            <p className={`text-center ${isDark ? "text-gray-300" : "text-gray-500"} col-span-2`}>
               Aucun point de vente trouvé pour votre recherche.
             </p>
           )}
@@ -216,17 +223,17 @@ export default function PurchasePoints() {
           <button
             onClick={() => setPage(p => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="px-4 py-2 border rounded-lg disabled:opacity-50"
+            className={`px-4 py-2 border rounded-lg disabled:opacity-50 ${isDark ? "text-white border-gray-600" : ""}`}
           >
             Précédent
           </button>
-          <span className="px-4 py-2">
+          <span className={`px-4 py-2 ${isDark ? "text-white" : ""}`}>
             Page {page} sur {Math.ceil(purchasePoints.total / limit)}
           </span>
           <button
             onClick={() => setPage(p => p + 1)}
             disabled={page >= Math.ceil(purchasePoints.total / limit)}
-            className="px-4 py-2 border rounded-lg disabled:opacity-50"
+            className={`px-4 py-2 border rounded-lg disabled:opacity-50 ${isDark ? "text-white border-gray-600" : ""}`}
           >
             Suivant
           </button>
