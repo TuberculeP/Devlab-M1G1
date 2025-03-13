@@ -1,12 +1,17 @@
 "use client";
 
+import { LightAndDarkModeContext } from "@/context/lightAndDarkMode";
 import Link from "next/link";
+import { useContext } from "react";
 
 export const Footer = () => {
+
+  const { isDark } = useContext(LightAndDarkModeContext)!;
+
   return (
     <>
-      <section className="footer-container">
-        <div className="footer-logo" />
+      <section className={isDark ? "footer-container-dark" :"footer-container"}>
+        <div className={isDark ? "footer-logo-dark" :"footer-logo"} />
         <div className="footer-links-container">
           <Link href={"#"} className="footer-link">
             Plan du site

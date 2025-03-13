@@ -1,0 +1,48 @@
+.darkAndLightBtn {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    margin: auto;
+}
+
+.darkAndLightBtn:hover {
+    transition: all ease 0.2s;
+    scale: 1.1 ;
+}
+
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+@media (max-width: 768px) {
+
+    .darkAndLightBtn {
+        height: 30px;
+        width: 30px;
+        top: 20px;
+        z-index: 3;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .darkAndLightBtn {
+        top: 5px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .darkAndLightBtn {
+        top: 2px;
+    }
+
+}

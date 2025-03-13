@@ -10,6 +10,7 @@ export default function Post({
   params: { slug: string };
 }) {
   const post = posts.find((i) => {
+    console.log(i)
     return slugify(i.title) === slug;
   });
   if (!post) return notFound();

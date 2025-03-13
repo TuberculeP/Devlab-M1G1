@@ -5,6 +5,7 @@ import "../style/main.scss";
 import { Header } from "@/components/header/header";
 import { Footer } from "@/components/footer/footer";
 import { usePathname } from "next/navigation";
+import { Context } from "@/context/lightAndDarkMode";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,15 +29,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased test`}
       >
-        {pathname.startsWith("/admin") ? (
-          <section>{children}</section>
-        ) : (
-          <>
-            <Header />
+        <Context>
+          {pathname.startsWith("/admin") ? (
             <section>{children}</section>
-            <Footer />
-          </>
-        )}
+          ) : (
+            <>
+              <Header />
+                <section>{children}</section>
+              <Footer />
+            </>
+          )}
+        </Context>
       </body>
     </html>
   );
