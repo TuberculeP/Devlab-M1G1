@@ -91,13 +91,13 @@ const createCollectPoint: RequestHandler = async (req, res) => {
 
 const updateCollectPoint: RequestHandler = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      res.status(400).json({ error: 'Invalid ID' });
+    const idParam = req.params.id;
+    if (!idParam) {
+      res.status(400).json({ error: 'Missing ID' });
       return;
     }
 
-    const point = await collectPointsService.update(id, req.body);
+    const point = await collectPointsService.update(idParam, req.body);
     if (!point) {
       res.status(404).json({ error: 'Collect point not found' });
       return;
@@ -112,9 +112,9 @@ const updateCollectPoint: RequestHandler = async (req, res) => {
 
 const deleteCollectPoint: RequestHandler = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      res.status(400).json({ error: 'Invalid ID' });
+    const id = req.params.id;
+    if (!id) {
+      res.status(400).json({ error: 'Missing ID' });
       return;
     }
 

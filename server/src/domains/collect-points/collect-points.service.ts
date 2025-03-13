@@ -47,7 +47,7 @@ async function getAll(params: GetAllParams = {}): Promise<{ data: CollectPoint[]
   };
 }
 
-async function getById(id: number): Promise<CollectPoint | null> {
+async function getById(id: string | number): Promise<CollectPoint | null> {
   const { rows } = await pg.query<CollectPoint>(
     'SELECT * FROM collect_points WHERE id = $1',
     [id]
@@ -77,7 +77,7 @@ async function create(data: CollectPointInput): Promise<CollectPoint> {
   return rows[0];
 }
 
-async function update(id: number, data: Partial<CollectPointInput>): Promise<CollectPoint | null> {
+async function update(id: string | number, data: Partial<CollectPointInput>): Promise<CollectPoint | null> {
   const updates: string[] = [];
   const values: any[] = [];
   let paramCount = 1;
@@ -123,7 +123,7 @@ async function update(id: number, data: Partial<CollectPointInput>): Promise<Col
   return rows[0] || null;
 }
 
-async function remove(id: number): Promise<boolean> {
+async function remove(id: string | number): Promise<boolean> {
   const { rowCount } = await pg.query(
     'DELETE FROM collect_points WHERE id = $1',
     [id]

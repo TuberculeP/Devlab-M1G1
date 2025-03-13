@@ -3,6 +3,7 @@ import { PgUser } from "../../../../types/users";
 import {
   GET_ADMIN_USERS_QUERY,
   UPDATE_ADMIN_PASSWORD_QUERY,
+  CREATE_ADMIN_USER_QUERY,
 } from "./adminUsers.query";
 import { createHash } from "crypto";
 
@@ -19,4 +20,15 @@ async function updatePassword(user_id: string, password: string) {
   ]);
 }
 
-export { getAdminUsers, updatePassword };
+async function createUser(first_name: string, last_name: string, email: string, password: string) {
+  const encryptedPassword = createHash("sha256").update(password).digest("hex");
+  const { rows } = await pg.query<PgUser>(CREATE_ADMIN_USER_QUERY, [
+    first_name,
+    last_name,
+    email,
+    encryptedPassword,
+  ]);
+  return rows[0];
+}
+
+export { getAdminUsers, updatePassword, createUser };
