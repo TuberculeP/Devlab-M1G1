@@ -94,9 +94,9 @@ export default function RepairerPoints() {
 
   const filteredPoints = repairers?.data.filter(point => {
     // First filter by search term
+    console.log(point);
     const matchesSearch = 
       point.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      point.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       point.address.toLowerCase().includes(searchTerm.toLowerCase());
     
     // Then filter by device if selected

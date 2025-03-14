@@ -85,7 +85,6 @@ export default function CollectPoints() {
   const filteredPoints = collectPoints?.data.filter(point => {
     const matchesSearch = 
       point.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      point.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       point.address.toLowerCase().includes(searchTerm.toLowerCase());
     
     return matchesSearch;
