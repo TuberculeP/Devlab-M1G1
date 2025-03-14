@@ -65,7 +65,7 @@
 }
 
 @media (max-width: 1024px) {
-    .footer-container {
+    .footer-container, .footer-container-dark {
         grid-template-columns: none;
     }
 
@@ -77,8 +77,19 @@
         flex-wrap: wrap;
     }
 
-    .footer-logo {
-        width: 200px;
-        height: 53px;
+}
+
+@media (max-width: 1024px) {
+    .footer-container, .footer-container-dark {
+        grid-template-columns: none;
     }
+
+    .footer-link {
+        margin-left: none;
+    }
+
+    .footer-links-container {
+        flex-wrap: wrap;
+    }
+
 }
